@@ -1,10 +1,10 @@
 body {
   background-image: url("../assets/landing/landing_tel.jpg");
 }
-#Login {
+#join {
   position: relative;
 }
-#Login::before {
+#join::before {
   content: "";
   background: #ee6c4d;
   position: absolute;
@@ -16,6 +16,6 @@ body {
   transition: transform 0.5s ease-in;
   transform-origin: 0 0;
 }
-#Login:hover::before {
+#join:hover::before {
   transform: scaleX(1);
 }
