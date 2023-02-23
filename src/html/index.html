@@ -105,7 +105,7 @@
       <div class="flex items-center justify-center gap-2">
         <img
           src="../assets/icons/logo.png"
-          class="h-20 w-20 xl:h-24 xl:w-24"
+          class="pointer-events-none h-20 w-20 xl:h-24 xl:w-24"
           alt="Logo MenUmed"
         />
         <span
@@ -116,21 +116,73 @@
         >
       </div>
       <button
-        class="lg:text-md mr-8 rounded-3xl bg-logo_blue px-4 py-2 text-sm shadow-2xl transition-colors duration-500 hover:bg-logo_d_blue md:mr-14 lg:px-5 lg:py-3"
-        id="logIN"
+        class="mr-8 rounded-3xl bg-logo_blue px-4 py-2 text-sm shadow-2xl duration-1000 hover:bg-logo_d_blue md:mr-14 lg:px-5 lg:py-3 lg:text-base"
+        id="login"
       >
         Login
       </button>
     </header>
+    <div
+      class="absolute top-1/2 left-1/2 z-20 flex w-[80%] max-w-sm -translate-x-1/2 -translate-y-1/2 scale-0 transform flex-col items-center justify-center gap-3 rounded-xl bg-logo_d_blue py-5 px-5 transition-transform duration-300 ease-in-out sm:max-w-md md:gap-6 lg:max-w-lg xl:max-w-xl"
+      id="joinpopup"
+    >
+      <h2 class="font-poppins text-xl font-semibold lg:text-2xl">
+        Continua ca:
+      </h2>
+      <div
+        class="flex flex-wrap items-center justify-center gap-8 sm:gap-16 lg:gap-20"
+      >
+        <div
+          class="flex cursor-pointer flex-col items-center justify-start gap-3 rounded-lg bg-slate-900 p-4 shadow-2xl transition-transform duration-300 hover:scale-110 lg:gap-5"
+        >
+          <img
+            src="../assets/icons/logo_medici.png"
+            class="pointer-events-none h-20 w-20 sm:h-28 sm:w-28 lg:h-36 lg:w-36"
+            alt=""
+          />
+          <button
+            class="w-[75px] rounded-lg bg-logo_blue px-3 py-1 text-base xl:w-[85px] 2xl:text-lg"
+          >
+            Medic
+          </button>
+        </div>
+        <div
+          class="flex cursor-pointer flex-col items-center justify-start gap-3 rounded-lg bg-slate-900 p-4 shadow-2xl transition-transform duration-300 hover:scale-110 lg:gap-5"
+        >
+          <img
+            src="../assets/icons/logo_pacient.png"
+            class="pointer-events-none h-20 w-20 sm:h-28 sm:w-28 lg:h-36 lg:w-36"
+            alt=""
+          />
+          <button
+            class="w-[75px] rounded-lg bg-logo_blue px-3 py-1 text-base xl:w-[85px] 2xl:text-lg"
+          >
+            Pacient
+          </button>
+        </div>
+      </div>
+      <button
+        id="joinclose"
+        class="self-end rounded-lg bg-somon px-2 py-1 font-poppins text-sm transition-colors duration-300 hover:bg-amber-800 sm:text-base 2xl:text-lg"
+      >
+        Close
+      </button>
+    </div>
+    <div
+      class="pointer-events-none fixed inset-0 z-10 bg-black opacity-0"
+      id="joinwrap"
+    ></div>
     <!-- wrap -->
-    <div class="wrap pointer-events-none fixed inset-0 z-20"></div>
+    <div
+      class="wrap pointer-events-none fixed inset-0 z-20 bg-black opacity-0"
+    ></div>
     <!-- login popup -->
     <div
-      class="login-popup absolute top-1/2 left-1/2 z-30 flex h-[250px] w-5/6 max-w-xs -translate-x-1/2 -translate-y-1/2 scale-0 flex-col items-center rounded-xl bg-logo_d_blue duration-300 sm:max-w-sm xl:max-w-lg"
+      class="login-popup absolute top-1/2 left-1/2 z-30 flex h-[250px] w-5/6 max-w-xs -translate-x-1/2 -translate-y-1/2 scale-0 flex-col items-center rounded-xl bg-logo_d_blue sm:max-w-sm xl:max-w-lg"
     >
       <!-- close login -->
       <p class="close-login mt-1 mr-3 cursor-pointer self-end text-lg">
-        &times
+        &times;
       </p>
       <!-- login -->
       <div class="mt-2 flex flex-col items-center justify-center gap-8">
@@ -145,7 +197,7 @@
               class="absolute top-[-5px] left-[-5px] z-10 flex h-8 w-8 items-center justify-center rounded-3xl bg-white sm:top-[-8px] sm:left-[-8px] sm:h-10 sm:w-10"
             >
               <img
-                class="h-4 w-4 sm:h-6 sm:w-6"
+                class="pointer-events-none h-4 w-4 sm:h-6 sm:w-6"
                 src="../assets/icons/user.png"
                 alt=""
               />
@@ -160,7 +212,7 @@
               class="absolute top-[-5px] right-[-5px] z-10 flex h-8 w-8 items-center justify-center rounded-3xl bg-white sm:top-[-8px] sm:right-[-8px] sm:h-10 sm:w-10"
             >
               <img
-                class="h-4 w-4 sm:h-6 sm:w-6"
+                class="pointer-events-none h-4 w-4 sm:h-6 sm:w-6"
                 src="../assets/icons/password.png"
                 alt=""
               />
@@ -172,7 +224,7 @@
           </div>
           <div>
             <input
-              class="w-[80px] cursor-pointer rounded-lg bg-somon px-3 py-1 text-sm uppercase shadow-2xl"
+              class="w-[80px] cursor-pointer rounded-lg bg-somon px-3 py-1 text-sm uppercase shadow-2xl transition-colors duration-300 hover:bg-amber-800"
               type="submit"
               value="Log in"
             />
@@ -194,7 +246,7 @@
         modi eum expedita repellat nihil ad!
       </p>
       <button
-        id="Login"
+        id="join"
         class="mt-6 mb-6 cursor-pointer rounded-lg border-2 border-solid px-4 py-2 text-sm uppercase"
       >
         Join us

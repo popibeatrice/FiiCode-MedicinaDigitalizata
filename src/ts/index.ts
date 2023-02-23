@@ -1,3 +1,3 @@
 import "../styles/index.css";
-import "./login.ts";
+import "./loginPopup.ts";
 import "./joinPopup.ts";

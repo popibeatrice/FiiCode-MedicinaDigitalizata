@@ -13,10 +13,19 @@ body {
   height: 100%;
   width: 100%;
   transform: scaleX(0);
-  transition: transform 0.5s ease-in;
+  transition: transform 0.3s ease-in-out;
   transform-origin: 0 0;
 }
 #join:hover::before {
   transform: scaleX(1);
 }
-
+#login {
+  transition: background-color 0.3s ease-in-out;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+.login-popup {
+  transition: transform 0.3s ease-in-out;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+}

@@ -10,16 +10,16 @@ joinBtn.addEventListener("click", (e) => {
   joinPopup.classList.remove("scale-0");
   joinWrap.classList.add("opacity-[65%]");
   joinWrap.classList.remove("pointer-events-none");
+});
 
-  // Pop up close
-  joinWrap.addEventListener("click", (e) => {
-    joinPopup.classList.add("scale-0");
-    joinWrap.classList.remove("opacity-[65%]");
-    joinWrap.classList.add("pointer-events-none");
-  });
-  joincloseBtn.addEventListener("click", (e) => {
-    joinPopup.classList.add("scale-0");
-    joinWrap.classList.remove("opacity-[65%]");
-    joinWrap.classList.add("pointer-events-none");
-  });
+// Pop up close
+joinWrap.addEventListener("click", (e) => {
+  joinPopup.classList.add("scale-0");
+  joinWrap.classList.remove("opacity-[65%]");
+  joinWrap.classList.add("pointer-events-none");
+});
+joincloseBtn.addEventListener("click", (e) => {
+  joinPopup.classList.add("scale-0");
+  joinWrap.classList.remove("opacity-[65%]");
+  joinWrap.classList.add("pointer-events-none");
 });
