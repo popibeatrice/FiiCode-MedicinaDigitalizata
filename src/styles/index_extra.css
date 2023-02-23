@@ -1,0 +1,21 @@
+body {
+  background-image: url("../assets/landing/landing_tel.jpg");
+}
+a {
+  position: relative;
+}
+a::before {
+  content: "";
+  background: #ee6c4d;
+  position: absolute;
+  inset: 0 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in;
+  transform-origin: 0 0;
+}
+a:hover::before {
+  transform: scaleX(1);
+}
