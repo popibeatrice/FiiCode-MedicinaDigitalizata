@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         logo_blue: "#00a3d0",
         somon: "#ee6c4d",
+        logo_d_blue: "#293241",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
