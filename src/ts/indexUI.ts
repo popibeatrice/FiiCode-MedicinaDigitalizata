@@ -3,6 +3,10 @@ const joinBtn = document.querySelector("#join") as HTMLElement;
 const joincloseBtn = document.querySelector("#joinclose") as HTMLElement;
 const joinPopup = document.querySelector("#joinpopup") as HTMLElement;
 const joinWrap = document.querySelector("#joinwrap") as HTMLElement;
+const login_popup = document.querySelector(".login-popup") as HTMLElement;
+const login_button = document.querySelector("#login") as HTMLElement;
+const wrap = document.querySelector(".wrap") as HTMLElement;
+const close_login = document.querySelector(".close-login") as HTMLElement;
 
 //events
 
@@ -13,6 +17,12 @@ joinBtn.addEventListener("click", (e) => {
   joinWrap.classList.add("opacity-[65%]");
   joinWrap.classList.remove("pointer-events-none");
 });
+login_button.addEventListener("click", (e) => {
+  login_popup.classList.remove("hidden");
+  login_popup.classList.add("flex");
+  wrap.classList.add("opacity-[65%]");
+  wrap.classList.remove("pointer-events-none");
+});
 
 // Pop up close
 joinWrap.addEventListener("click", (e) => {
@@ -21,6 +31,12 @@ joinWrap.addEventListener("click", (e) => {
   joinWrap.classList.remove("opacity-[65%]");
   joinWrap.classList.add("pointer-events-none");
 });
+wrap.addEventListener("click", (e) => {
+  login_popup.classList.add("hidden");
+  login_popup.classList.remove("flex");
+  wrap.classList.remove("opacity-[65%]");
+  wrap.classList.add("pointer-events-none");
+});
 
 // Pop up close
 joincloseBtn.addEventListener("click", (e) => {
@@ -28,4 +44,10 @@ joincloseBtn.addEventListener("click", (e) => {
   joinPopup.classList.remove("flex");
   joinWrap.classList.remove("opacity-[65%]");
   joinWrap.classList.add("pointer-events-none");
+});
+close_login.addEventListener("click", (e) => {
+  login_popup.classList.add("hidden");
+  login_popup.classList.remove("flex");
+  wrap.classList.remove("opacity-[65%]");
+  wrap.classList.add("pointer-events-none");
 });
