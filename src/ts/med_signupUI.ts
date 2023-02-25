@@ -1,52 +1,69 @@
-import { initializeApp } from "firebase/app";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  addDoc,
-  doc,
-  setDoc,
-} from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-//config
-const firebaseConfig = {
-  apiKey: "AIzaSyD00DDmckXiMglWRxEnhLBlQLovoLzfE-0",
-  authDomain: "menumed-cc109.firebaseapp.com",
-  projectId: "menumed-cc109",
-  storageBucket: "menumed-cc109.appspot.com",
-  messagingSenderId: "772753359565",
-  appId: "1:772753359565:web:af2e60a2297359bbc0df84",
-};
-
-//init firebase with config
-initializeApp(firebaseConfig);
-
-//inti services
-const db = getFirestore();
-const auth = getAuth();
-console.log("bau");
-
-//collection ref
-const colRef = collection(db, "users");
+import { db, auth, storage } from "./firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc, collection } from "firebase/firestore";
+import { ref, uploadString } from "firebase/storage";
 
 ///variables
 const signupForm = document.querySelector("form") as HTMLFormElement;
 
 //get collection data
+const colRef = collection(db, "users");
 
 // form signup
 signupForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  //input values
   const email = signupForm.email.value;
   const password = signupForm.pass.value;
   const nume = signupForm.nume.value;
+  const prenume = signupForm.prenume.value;
+  const telnumb = signupForm.telnumb.value;
+  const idCard = signupForm.idCard.files[0];
+  const medCard = signupForm.medCard.files[0];
+  const workstart = signupForm.workstart.value;
+  const workend = signupForm.workend.value;
+  const jud = signupForm.jud.value;
+  const loc = signupForm.loc.value;
+
+  ///fileReader
+
+  let imgID: string | ArrayBuffer;
+  let imgMed: string | ArrayBuffer;
+  let reader_id = new FileReader();
+  reader_id.readAsDataURL(idCard);
+  reader_id.onload = (e) => {
+     imgID= reader_id.result as string | ArrayBuffer;
+     console.log(imgID);
+  }
+
+  let reader_med = new FileReader();
+  reader_med.readAsDataURL(medCard);
+  reader_med.onload = (e) => {
+     imgMed= reader_med.result as string | ArrayBuffer;
+     console.log(imgMed);
+  }
+
   createUserWithEmailAndPassword(auth, email, password)
     .then((cred) => {
       //user infos
       const UID = cred.user.uid;
       setDoc(doc(db, "users", UID), {
-        name: nume,
+        nume,
+        prenume,
+        telnumb,
+        workstart,
+        workend,
+        jud,
+        loc,
       });
+      
+      const ImageRef_id = ref(storage, `${UID}/${idCard.name}`);
+      uploadString(ImageRef_id, imgID as string, "data_url");
+      signupForm.reset();
+
+      const ImageRef_med = ref(storage, `${UID}/${medCard.name}`);
+      uploadString(ImageRef_med, imgMed as string, "data_url");
       signupForm.reset();
     })
     .catch((err) => {

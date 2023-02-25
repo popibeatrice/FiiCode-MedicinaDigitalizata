@@ -41,7 +41,6 @@ input[type="file"]:active {
   cursor: pointer;
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
-  width: 10rem;
 }
 
 input[type="file"]:hover {
