@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../assets/favicons/favicon.ico" />
+    <link
+      rel="icon"
+      sizes="16x16 32x32 64x64"
+      href="../assets/favicons/favicon.ico"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="196x196"
+      href="../assets/favicons/favicon-192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="160x160"
+      href="../assets/favicons/favicon-160.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="../assets/favicons/favicon-96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="64x64"
+      href="../assets/favicons/favicon-64.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/favicons/favicon-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../assets/favicons/favicon-16.png"
+    />
+    <link rel="apple-touch-icon" href="../assets/favicons/favicon-57.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="../assets/favicons/favicon-114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="../assets/favicons/favicon-72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="../assets/favicons/favicon-144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="../assets/favicons/favicon-60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="../assets/favicons/favicon-120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../assets/favicons/favicon-76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="../assets/favicons/favicon-152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../assets/favicons/favicon-180.png"
+    />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta
+      name="msapplication-TileImage"
+      content="../assets/favicons/favicon-144.png"
+    />
+    <meta
+      name="msapplication-config"
+      content="../assets/favicons/browserconfig.xml"
+    />
+    <title>med signup</title>
+  </head>
+  <body class="flex items-start justify-center font-roboto">
+    <main
+      class="relative mx-2 mb-10 mt-16 flex max-w-md flex-col items-center rounded-lg bg-white px-5 opacity-95 shadow-xl shadow-white xxs:px-12 xs:px-6"
+    >
+      <h1
+        class="mt-4 font-poppins text-xl font-semibold sm:text-2xl xl:text-3xl"
+      >
+        Inregistrare
+      </h1>
+      <form
+        action=""
+        class="mb-6 mt-3 flex max-w-full flex-col items-center gap-8 sm:text-lg"
+      >
+        <div class="flex flex-col">
+          <label for="name">Numele intreg</label>
+          <input
+            class="w-[12rem] xs:w-[18rem] sm:w-[24rem]"
+            type="text"
+            name="name"
+            id="name"
+          />
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="email">Email</label>
+          <input
+            class="w-[12rem] xs:w-[18rem] sm:w-[24rem]"
+            type="email"
+            name="email"
+            id="email"
+          />
+        </div>
+        <div class="flex flex-col gap-3 xs:flex-row">
+          <div class="flex flex-col gap-1">
+            <label for="pass">Parola</label>
+            <input
+              class="w-[12rem] xs:w-[10rem] sm:w-[12rem]"
+              type="password"
+              name="pass"
+              id="pass"
+            />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="passconf">Confirma parola</label>
+            <input
+              class="w-[12rem] xs:w-[10rem] sm:w-[12rem]"
+              type="password"
+              name="passconf"
+              id="passconf"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col gap-3 xs:flex-row xs:gap-6">
+          <div class="flex flex-col gap-1">
+            <label for="idCard">Act de identitate</label>
+            <input
+              class="w-[12rem] xs:w-[10rem] sm:w-[12rem]"
+              type="file"
+              name="idCard"
+              id="idCard"
+            />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="medCard">Act medical</label>
+            <input
+              class="w-[12rem] xs:w-[10rem] sm:w-[12rem]"
+              type="file"
+              name="medCard"
+              id="medCard"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="telnumb">Numar de telefon</label>
+          <input
+            class="w-[12rem] xs:w-[18rem] sm:w-[24rem]"
+            type="tel"
+            name="telnumb"
+            id="telnumb"
+          />
+        </div>
+        <div class="flex flex-col gap-3 xs:flex-row">
+          <div class="flex flex-col gap-1">
+            <label for="workstart">Incepere program</label>
+            <input
+              class="w-[12rem] text-center xs:w-[10rem] sm:w-[12rem]"
+              type="time"
+              name="workstart"
+              id="workstart"
+            />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="workend">Terminare program</label>
+            <input
+              class="w-[12rem] text-center xs:w-[10rem] sm:w-[12rem]"
+              type="time"
+              name="workend"
+              id="workend"
+            />
+          </div>
+        </div>
+        <div
+          class="flex flex-col items-center justify-center gap-3 xs:flex-row"
+        >
+          <div class="flex flex-col gap-1">
+            <label for="jud">Judet</label>
+            <input
+              class="w-[12rem] xs:w-[10rem] sm:w-[12rem]"
+              type="text"
+              name="jud"
+              id="jud"
+            />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="loc">Localitate</label>
+            <input
+              class="w-[12rem] xs:w-[10rem] sm:w-[12rem]"
+              type="text"
+              name="loc"
+              id="loc"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="street">Strada cabinet</label>
+          <input
+            class="w-[12rem] xs:w-[18rem] sm:w-[24rem]"
+            type="text"
+            name="street"
+            id="street"
+          />
+        </div>
+        <button
+          class="rounded-3xl bg-logo_blue px-4 py-2 text-lg text-white transition-colors duration-300 hover:bg-logo_d_blue lg:text-2xl"
+        >
+          signup
+        </button>
+      </form>
+    </main>
+  </body>
+</html>
