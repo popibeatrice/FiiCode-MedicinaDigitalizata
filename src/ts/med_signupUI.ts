@@ -1,5 +1,12 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 //config
 const firebaseConfig = {
@@ -22,28 +29,24 @@ console.log("bau");
 //collection ref
 const colRef = collection(db, "users");
 
+///variables
+const signupForm = document.querySelector("form") as HTMLFormElement;
+
 //get collection data
-getDocs(colRef)
-  .then((snapshot) => {
-    let users = new Array();
-    snapshot.docs.forEach((doc) => {
-      users.push({ ...doc.data(), id: doc.id });
-    });
-    console.log(users);
-  })
-  .catch((err) => {
-    console.log(err.message);
-  });
 
 // form signup
-const signupForm = document.querySelector("form");
 signupForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const email = signupForm.email.value;
   const password = signupForm.pass.value;
+  const nume = signupForm.nume.value;
   createUserWithEmailAndPassword(auth, email, password)
     .then((cred) => {
-      console.log(cred.user);
+      //user infos
+      const UID = cred.user.uid;
+      setDoc(doc(db, "users", UID), {
+        name: nume,
+      });
       signupForm.reset();
     })
     .catch((err) => {
