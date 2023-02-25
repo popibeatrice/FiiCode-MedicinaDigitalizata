@@ -1,3 +1,4 @@
+import "../styles/index_extra.css";
 import "../styles/index.css";
 import "../ts/joinPopup.ts";
 import "../ts/loginPopup.ts";

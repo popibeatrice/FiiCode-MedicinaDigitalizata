@@ -4,6 +4,8 @@ const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   entry: {
     index: "./src/ts/index.ts",
+    med_signup: "./src/ts/med_signup.ts",
+    patient_signup: "./src/ts/patient_signup.ts",
   },
   mode: "development",
   devServer: {
@@ -40,6 +42,18 @@ module.exports = {
       filename: "index.html",
       template: "src/html/index.html",
       chunks: ["index"],
+    }),
+    new HtmlWebpackPlugin({
+      // Also generate a test.html
+      filename: "med_signup.html",
+      template: "src/html/med_signup.html",
+      chunks: ["med_signup"],
+    }),
+    new HtmlWebpackPlugin({
+      // Also generate a test.html
+      filename: "patient_signup.html",
+      template: "src/html/patient_signup.html",
+      chunks: ["patient_signup"],
     }),
   ],
   output: {
