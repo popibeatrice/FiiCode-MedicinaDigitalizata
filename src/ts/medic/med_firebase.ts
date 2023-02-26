@@ -60,14 +60,7 @@ verify.addEventListener("click", (e) => {
 
 submit.addEventListener("click", (e) => {
   e.preventDefault();
-  auth.currentUser.reload();
-  setTimeout(() => {
-    auth.currentUser.reload();
-    console.log(auth.currentUser.emailVerified);
-    if (!auth.currentUser.emailVerified) {
-      auth.updateCurrentUser;
-      auth.currentUser.reload();
-    }
+  auth.currentUser.reload().then(() => {
     console.log(auth.currentUser.emailVerified);
     if (auth.currentUser.emailVerified) {
       // user info
@@ -132,5 +125,5 @@ submit.addEventListener("click", (e) => {
       uploadString(ImageRef_med, imgMed as string, "data_url");
       signupForm.reset();
     } else console.log("emailul nu e confirmat");
-  }, 1000);
+  });
 });
