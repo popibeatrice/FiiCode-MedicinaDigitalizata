@@ -98,9 +98,9 @@
     />
     <title>med signup</title>
   </head>
-  <body class="flex items-start justify-center font-roboto">
+  <body class="flex items-center justify-center font-roboto">
     <main
-      class="relative mx-2 mb-10 mt-5 flex flex-col items-center rounded-lg bg-white px-5 opacity-95 shadow-2xl shadow-black xxs:px-6 xs:px-6 md:mt-10 md:px-8"
+      class="relative mx-2 my-5 flex flex-col items-center rounded-lg bg-white px-5 opacity-95 shadow-2xl shadow-black xxs:px-6 xs:px-6 md:px-8"
     >
       <h1
         class="mt-4 font-poppins text-xl font-semibold sm:text-2xl xl:text-3xl"
@@ -113,6 +113,7 @@
         enctype="multipart/form-data"
         action=""
         class="med_singup-form mb-6 mt-3 flex flex-col items-center gap-8 sm:text-lg"
+        autocomplete="off"
       >
         <!-- personal  -->
         <div class="self-start">Personal Details</div>
@@ -168,6 +169,7 @@
               type="password"
               name="pass"
               id="pass"
+              autocomplete="new-password"
               required
             />
           </div>
@@ -178,8 +180,8 @@
               type="password"
               name="passconf"
               id="passconf"
+              autocomplete="new-password"
               required
-              onkeyup="Validation()"
             />
           </div>
         </div>
@@ -260,11 +262,20 @@
           </div>
         </div>
         <!-- submit -->
-        <button
-          class="rounded-3xl bg-logo_blue px-4 py-2 text-lg text-white transition-colors duration-300 hover:bg-logo_d_blue lg:text-2xl"
-        >
-          signup
-        </button>
+        <div class="flex w-full flex-col gap-6 xs:flex-row xs:justify-between">
+          <button
+            id="verify"
+            class="rounded-3xl bg-logo_blue px-4 py-2 text-lg text-white transition-colors duration-300 hover:bg-logo_d_blue lg:text-2xl"
+          >
+            verify you email
+          </button>
+          <button
+            id="submit"
+            class="rounded-3xl bg-logo_blue px-4 py-2 text-lg text-white transition-colors duration-300 hover:bg-logo_d_blue lg:text-2xl"
+          >
+            signup
+          </button>
+        </div>
       </form>
     </main>
   </body>
