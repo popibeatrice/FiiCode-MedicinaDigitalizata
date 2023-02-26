@@ -4,8 +4,8 @@ const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   entry: {
     index: "./src/ts/index.ts",
-    med_signup: "./src/ts/med_signup.ts",
-    patient_signup: "./src/ts/patient_signup.ts",
+    med_signup: "./src/ts/medic/med_signup.ts",
+    patient_signup: "./src/ts/pacient/patient_signup.ts",
   },
   mode: "development",
   devServer: {
