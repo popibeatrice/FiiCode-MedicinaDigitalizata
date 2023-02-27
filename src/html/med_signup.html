@@ -116,7 +116,7 @@
         autocomplete="off"
       >
         <!-- personal  -->
-        <div class="self-start">Personal Details</div>
+        <div class="self-start text-gray-600">Personal Details</div>
         <!-- name, phone -->
         <div class="flex flex-col gap-3 xs:flex-row sm:gap-10">
           <div class="flex flex-col">
@@ -162,8 +162,8 @@
               required
             />
           </div>
-          <div class="flex flex-col gap-1">
-            <label for="pass">Parola</label>
+          <div class="flex flex-col">
+            <label for="pass">Parola </label>
             <input
               class="w-[12rem] xs:w-[8rem] sm:w-[10rem] lg:w-[14rem]"
               type="password"
@@ -172,8 +172,14 @@
               autocomplete="new-password"
               required
             />
+            <p
+              class="password-regex mt-1 w-[12rem] text-xs text-gray-600 xs:w-[8rem] sm:w-[10rem] lg:w-[14rem]"
+            >
+              At least 1 uppercase, 1 lowercase, and 1 numeric character.
+              Minimum 8 characters.
+            </p>
           </div>
-          <div class="flex flex-col gap-1">
+          <div class="flex flex-col">
             <label for="passconf">Confirma parola</label>
             <input
               class="w-[12rem] xs:w-[8rem] sm:w-[10rem] lg:w-[14rem]"
@@ -186,12 +192,12 @@
           </div>
         </div>
         <!-- occupation -->
-        <div class="self-start">Occupation Details</div>
+        <div class="self-start text-gray-600">Occupation Details</div>
         <!-- occupation form -->
         <div class="flex flex-col gap-3 xs:flex-row sm:gap-10">
           <!-- upload -->
-          <div class="order-3">
-            <div class="flex flex-col gap-1">
+          <div class="order-3 flex flex-col gap-8 justify-center">
+            <div class="flex flex-col ">
               <label for="idCard">Act de identitate</label>
               <input
                 class="w-[12rem] xs:w-[8rem] sm:w-[10rem] lg:w-[14rem]"
@@ -202,7 +208,7 @@
               />
             </div>
 
-            <div class="flex flex-col gap-1">
+            <div class="flex flex-col">
               <label for="medCard">Act medical</label>
               <input
                 class="w-[12rem] xs:w-[8rem] sm:w-[10rem] lg:w-[14rem]"
@@ -214,8 +220,8 @@
             </div>
           </div>
           <!-- program -->
-          <div>
-            <div class="order-1 flex flex-col gap-1">
+          <div class="flex flex-col gap-8 justify-center">
+            <div class="order-1 flex flex-col ">
               <label for="workstart">Incepere program</label>
               <input
                 class="w-[12rem] text-center xs:w-[10rem] sm:w-[10rem] lg:w-[14rem]"
@@ -226,7 +232,7 @@
               />
             </div>
 
-            <div class="flex flex-col gap-1">
+            <div class="flex flex-col">
               <label for="workend">Terminare program</label>
               <input
                 class="w-[12rem] text-center xs:w-[8rem] sm:w-[10rem] lg:w-[14rem]"
@@ -238,8 +244,8 @@
             </div>
           </div>
           <!-- origini -->
-          <div>
-            <div class="flex flex-col gap-1">
+          <div class="flex flex-col gap-8 justify-center">
+            <div class="flex flex-col ">
               <label for="jud">Judet</label>
               <input
                 class="w-[12rem] xs:w-[8rem] sm:w-[10rem] lg:w-[14rem]"
@@ -249,7 +255,7 @@
                 required
               />
             </div>
-            <div class="flex flex-col gap-1">
+            <div class="flex flex-col">
               <label for="loc">Localitate</label>
               <input
                 class="w-[12rem] xs:w-[8rem] sm:w-[10rem] lg:w-[14rem]"
@@ -265,13 +271,13 @@
         <div class="flex w-full flex-col gap-6 xs:flex-row xs:justify-between">
           <button
             id="verify"
-            class="rounded-3xl bg-logo_blue px-4 py-2 text-lg text-white transition-colors duration-300 hover:bg-logo_d_blue lg:text-2xl"
+            class="text-md rounded-md bg-logo_blue px-4 py-2 text-white transition-colors duration-300 hover:bg-logo_d_blue lg:text-xl"
           >
             verify your email
           </button>
           <button
             id="submit"
-            class="rounded-3xl bg-logo_blue px-4 py-2 text-lg text-white transition-colors duration-300 hover:bg-logo_d_blue lg:text-2xl"
+            class="text-md rounded-md bg-logo_blue px-4 py-2 text-white transition-colors duration-300 hover:bg-logo_d_blue lg:text-xl"
           >
             signup
           </button>

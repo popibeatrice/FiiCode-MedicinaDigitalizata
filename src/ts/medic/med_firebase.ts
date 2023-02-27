@@ -12,6 +12,7 @@ const submit = document.querySelector("#submit") as HTMLButtonElement;
 const verify = document.querySelector("#verify") as HTMLButtonElement;
 const passRef = document.querySelector("#pass") as HTMLInputElement;
 const passConf = document.querySelector("#passconf") as HTMLInputElement;
+const PasswordField = document.querySelector(".password-regex") as HTMLElement;
 const passRegEx = /^(.{0,7}|[^a-z]{1,}|[^A-Z]{1,}|[^\d]{1,})$|[\s]/;
 const telnumbRegEx =
   /^(\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\s|\.|\-)?([0-9]{3}(\s|\.|\-|)){2}$/;
@@ -20,11 +21,21 @@ var imgMed: string | ArrayBuffer;
 
 // pass content
 passRef.addEventListener("keyup", () => {
-  if (passRef.value === "") passRef.style.borderBottomColor = "#293241";
+  if (passRef.value === "") 
+  {
+    passRef.style.borderBottomColor = "#293241";
+    PasswordField.style.color = "rgb(75 85 99 / var(--tw-text-opacity))";
+  }
   else if (passRegEx.test(passRef.value) === true)
+  {
     passRef.style.borderBottomColor = "red";
+    PasswordField.style.color = "red";
+  }
   else if (passRegEx.test(passRef.value) === false)
+  {
     passRef.style.borderBottomColor = "lightgreen";
+    PasswordField.style.color = "lightgreen";
+  }
   if (passRef.value === "" || passConf.value === "")
     passConf.style.borderBottomColor = "#293241";
   else if (passConf.value !== passRef.value)
@@ -38,9 +49,14 @@ passConf.addEventListener("keyup", () => {
   if (passConf.value === "" || passRef.value === "")
     passConf.style.borderBottomColor = "#293241";
   else if (passConf.value !== passRef.value)
-    passConf.style.borderBottomColor = "red";
+  {
+     passConf.style.borderBottomColor = "red";
+     
+  } 
   else if (passConf.value === passRef.value)
-    passConf.style.borderBottomColor = "lightgreen";
+    {
+      passConf.style.borderBottomColor = "lightgreen";
+    }
 });
 
 verify.addEventListener("click", (e) => {
