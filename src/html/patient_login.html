@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../assets/favicons/favicon.ico" />
+    <link
+      rel="icon"
+      sizes="16x16 32x32 64x64"
+      href="../assets/favicons/favicon.ico"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="196x196"
+      href="../assets/favicons/favicon-192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="160x160"
+      href="../assets/favicons/favicon-160.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="../assets/favicons/favicon-96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="64x64"
+      href="../assets/favicons/favicon-64.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/favicons/favicon-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../assets/favicons/favicon-16.png"
+    />
+    <link rel="apple-touch-icon" href="../assets/favicons/favicon-57.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="../assets/favicons/favicon-114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="../assets/favicons/favicon-72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="../assets/favicons/favicon-144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="../assets/favicons/favicon-60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="../assets/favicons/favicon-120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../assets/favicons/favicon-76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="../assets/favicons/favicon-152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../assets/favicons/favicon-180.png"
+    />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta
+      name="msapplication-TileImage"
+      content="../assets/favicons/favicon-144.png"
+    />
+    <meta
+      name="msapplication-config"
+      content="../assets/favicons/browserconfig.xml"
+    />
+    <title>patient signup</title>
+  </head>
+  <body class="flex items-center justify-center">
+    <main
+      class="m-4 flex w-56 max-w-xl flex-col items-center justify-center rounded-lg bg-white p-4 opacity-95 shadow-2xl shadow-black xs:w-64 sm:w-80 md:w-[40rem] md:p-8"
+    >
+        <h1 class="mt-6 font-poppins md:text-lg font-semibold">Login to your account</h1>
+        <form
+          class="mt-8 ml-8 flex w-full flex-col rounded-lg gap-8"
+        >
+        <div class = "flex flex-col gap-8 md:flex-row">
+        <div class = "flex flex-col">
+          <!-- <label for="nume" class = "text-sm hidden">Nume</label> -->
+          <input type="text" id ="nume" class = "border-b-2 text-sm border-black w-[10rem] xs:w-[12rem] md:w-[14rem] md:text-base" placeholder="Nume">
+        </div>
+        <div class = "flex flex-col">
+          <!-- <label for="prenume" class = "text-sm hidden">Prenume</label> -->
+          <input type="text" id ="prenume" class = "border-b-2 text-sm border-black  w-[10rem] xs:w-[12rem] md:w-[14rem] md:text-base" placeholder="Prenume">
+        </div>
+      </div>
+        <div class = "flex flex-col">
+          <!-- <label for="email" class = "text-sm hidden">Email</label> -->
+          <input type="email" id ="email" class = "border-b-2 text-sm border-black  w-[10rem] xs:w-[12rem] md:w-[14rem] lg:w-[14rem] md:text-base" placeholder="Email">
+        </div>
+        <div class = "flex flex-col gap-8 md:flex-row ">
+        <div class = "flex flex-col">
+          <!-- <label for="password" class = "text-sm hidden">Parola</label> -->
+          <input type="text" id ="password" class = "border-b-2 text-sm border-black  w-[10rem] xs:w-[12rem] md:w-[14rem] md:text-base" placeholder="Parola">
+          <p
+              class="password-regex mt-2 w-[11rem] xs:w-[12rem] md:w-[14rem] text-xs text-gray-600 "
+            >
+              At least 1 uppercase, 1 lowercase, and 1 numeric character.
+              Minimum 8 characters.
+            </p>
+        </div>
+        <div class = "flex flex-col">
+          <!-- <label for="passconf" class = "text-sm hidden">Confirmarea parolei</label> -->
+          <input type="text" id ="passconf" class = "text-sm border-b-2 border-black  w-[10rem] xs:w-[12rem] md:w-[14rem] md:text-base" placeholder="Confirmare Parola">
+        </div>
+        </div>
+          <button
+            id="formBtn"
+            class="mt-4 self-start rounded-md bg-logo_blue px-2 py-1 text-white"
+          >
+            Submit
+          </button>
+        </form>
+    </main>
+  </body>
+</html>

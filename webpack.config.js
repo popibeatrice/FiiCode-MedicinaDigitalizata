@@ -6,6 +6,7 @@ module.exports = {
     index: "./src/ts/index.ts",
     med_signup: "./src/ts/medic/med_signup.ts",
     patient_signup: "./src/ts/pacient/patient_signup.ts",
+    pacient_login: "./src/ts/pacient/patient_login.ts"
   },
   mode: "development",
   devServer: {
@@ -55,6 +56,11 @@ module.exports = {
       template: "src/html/patient_signup.html",
       chunks: ["patient_signup"],
     }),
+    new HtmlWebpackPlugin({
+      filename: "patient_login.html",
+      template: "src/html/patient_login.html",
+      chunks: ["patient_login"],
+    })
   ],
   output: {
     filename: "[name].bundle.js",
