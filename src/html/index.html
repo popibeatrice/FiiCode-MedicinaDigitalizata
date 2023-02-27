@@ -116,21 +116,27 @@
         >
       </div>
       <button
-        class="mr-8 rounded-3xl bg-logo_blue px-4 py-2 text-sm shadow-2xl duration-1000 hover:bg-logo_d_blue md:mr-14 lg:px-5 lg:py-3 lg:text-base"
+        class="text-md mr-8 rounded-md bg-logo_blue px-4 py-2 text-white transition-colors duration-300 hover:bg-logo_d_blue lg:text-xl"
         id="login"
       >
         Login
       </button>
     </header>
     <div
-      class="absolute top-1/2 left-1/2 z-20 hidden w-[80%] max-w-sm -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center gap-3 rounded-xl bg-logo_d_blue py-5 px-5 transition-transform duration-300 ease-in-out sm:max-w-md md:gap-6 lg:max-w-lg xl:max-w-xl"
+      class="absolute top-1/2 left-1/2 z-20 hidden w-[80%] max-w-sm -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center gap-3 rounded-xl bg-logo_d_blue px-2 pb-4 transition-transform duration-300 ease-in-out sm:max-w-md md:gap-6 lg:max-w-lg xl:max-w-xl"
       id="joinpopup"
     >
+      <button
+        id="joinclose"
+        class="cursor-pointer self-end text-lg transition-all hover:scale-150 hover:text-somon"
+      >
+        &times;
+      </button>
       <h2 class="font-poppins text-xl font-semibold lg:text-2xl">
         Continua ca:
       </h2>
       <div
-        class="flex flex-wrap items-center justify-center gap-8 sm:gap-16 lg:gap-20"
+        class="mb-8 flex flex-wrap items-center justify-center gap-8 sm:gap-16 lg:gap-20"
       >
         <a
           href="./med_signup.html"
@@ -165,12 +171,6 @@
           </button>
         </a>
       </div>
-      <button
-        id="joinclose"
-        class="self-end rounded-lg bg-somon px-2 py-1 font-poppins text-sm transition-colors duration-300 hover:bg-amber-800 sm:text-base 2xl:text-lg"
-      >
-        Close
-      </button>
     </div>
     <div
       class="pointer-events-none fixed inset-0 z-10 bg-black opacity-0"
@@ -255,7 +255,7 @@
       </p>
       <button
         id="join"
-        class="mt-6 mb-6 cursor-pointer rounded-lg border-2 border-solid px-4 py-2 text-sm uppercase"
+        class="mt-6 mb-6 cursor-pointer rounded-md border-2 border-solid px-4 py-2 text-sm uppercase"
       >
         Join us
       </button>

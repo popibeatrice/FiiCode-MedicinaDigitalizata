@@ -21,18 +21,13 @@ var imgMed: string | ArrayBuffer;
 
 // pass content
 passRef.addEventListener("keyup", () => {
-  if (passRef.value === "") 
-  {
+  if (passRef.value === "") {
     passRef.style.borderBottomColor = "#293241";
     PasswordField.style.color = "rgb(75 85 99 / var(--tw-text-opacity))";
-  }
-  else if (passRegEx.test(passRef.value) === true)
-  {
+  } else if (passRegEx.test(passRef.value) === true) {
     passRef.style.borderBottomColor = "red";
     PasswordField.style.color = "red";
-  }
-  else if (passRegEx.test(passRef.value) === false)
-  {
+  } else if (passRegEx.test(passRef.value) === false) {
     passRef.style.borderBottomColor = "lightgreen";
     PasswordField.style.color = "lightgreen";
   }
@@ -48,15 +43,11 @@ passRef.addEventListener("keyup", () => {
 passConf.addEventListener("keyup", () => {
   if (passConf.value === "" || passRef.value === "")
     passConf.style.borderBottomColor = "#293241";
-  else if (passConf.value !== passRef.value)
-  {
-     passConf.style.borderBottomColor = "red";
-     
-  } 
-  else if (passConf.value === passRef.value)
-    {
-      passConf.style.borderBottomColor = "lightgreen";
-    }
+  else if (passConf.value !== passRef.value) {
+    passConf.style.borderBottomColor = "red";
+  } else if (passConf.value === passRef.value) {
+    passConf.style.borderBottomColor = "lightgreen";
+  }
 });
 
 verify.addEventListener("click", (e) => {
@@ -70,19 +61,19 @@ verify.addEventListener("click", (e) => {
 
   // campuri
   if (email === "" || password === "") {
-    console.log("completati campurile");
+    alert("completati campurile");
     return;
   }
 
   // parola
   else if (passRegEx.test(passRef.value) === true) {
-    console.log("parola nu e safe");
+    alert("parola nu e safe");
     return;
   }
 
   // pass conf
   else if (password !== passConf.value) {
-    console.log("nu e buna confirmarea parolei");
+    alert("nu e buna confirmarea parolei");
     return;
   }
 
@@ -90,7 +81,7 @@ verify.addEventListener("click", (e) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then(() => {
       sendEmailVerification(auth.currentUser).then(() => {
-        console.log("verify your email");
+        alert("verify your email");
       });
     })
     .catch((err) => {
@@ -129,12 +120,12 @@ submit.addEventListener("click", (e) => {
           jud === "" ||
           loc === ""
         ) {
-          console.log("campurile de date personale nu sunt completate");
+          alert("campurile de date personale nu sunt completate");
           return;
         }
         console.log(telnumb);
         if (telnumbRegEx.test(telnumb) === false) {
-          console.log("nr de telefon nu e valid");
+          alert("nr de telefon nu e valid");
           return;
         }
 
@@ -154,6 +145,7 @@ submit.addEventListener("click", (e) => {
             // backend info push
             const UID = auth.currentUser.uid; // cod unic user
             setDoc(doc(db, "users", UID), {
+              medic: true,
               nume,
               prenume,
               telnumb,
@@ -172,7 +164,7 @@ submit.addEventListener("click", (e) => {
             signupForm.reset();
           };
         };
-      } else console.log("emailul nu e confirmat");
+      } else alert("emailul nu e confirmat");
     })
     .catch((err) => {
       console.log(err);

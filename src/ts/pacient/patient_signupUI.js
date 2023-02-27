@@ -1,7 +1,6 @@
 import { auth } from "../firebase.ts";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import intlTelInput from "intl-tel-input";
-
 // numar internat
 const number = document.querySelector("#phoneNumber");
 var iti = intlTelInput(number, {
@@ -40,7 +39,7 @@ function phoneSignIn(phoneNumber) {
     })
     .then(function (result) {
       // User is signed in successfully
-      console.log(result.user);
+      location.href = "./patient_follow.html";
     })
     .catch(function (error) {
       console.error(error);
