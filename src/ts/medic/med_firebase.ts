@@ -4,7 +4,7 @@ import {
   sendEmailVerification,
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { ref, uploadBytes, uploadString } from "firebase/storage";
+import { ref, uploadString } from "firebase/storage";
 
 // variables
 const signupForm = document.querySelector("form") as HTMLFormElement;
