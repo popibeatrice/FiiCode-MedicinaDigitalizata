@@ -1,54 +1,28 @@
-import {
-  getAuth,
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-} from "firebase/auth";
 import { auth } from "../firebase.ts";
-const SignupForm = document.querySelector("form");
-const recaptcha = document.querySelector(".recaptcha");
-const button = document.querySelector("button");
-const phonefield = SignupForm.phone.value;
-///const auth = getAuth();
-window.recaptchaVerifier = new RecaptchaVerifier("recaptcha", {}, auth);
-// recaptchaVerifier.render().then((widgetId) => {
-//   window.recaptchaWidgetId = widgetId;
-//   const recaptchaResponse = grecaptcha.getResponse(recaptchaWidgetId);
-// });
-const appVerifier = window.recaptchaVerifier;
-console.log(appVerifier);
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
-SignupForm.addEventListener("submit", (e) => {
+const form = document.querySelector("form");
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-  signInWithPhoneNumber(auth, phonefield, appVerifier)
-    .then((confirmationResult) => {
-      console.log(".");
-      window.confirmationResult = confirmationResult;
-      // ...
-    })
-    .catch((error) => {
-      grecaptcha.reset(window.recaptchaWidgetId);
-    });
+  signInWithPhoneNumbe(form.phoneNumber.value);
 });
-// const recaptchaVerifier = new RecaptchaVerifier(
-//     recaptcha,
-//   {
-//     size: "normal",
-//     callback: () => {
-//       console.log("pipi");
+console.log(form);
+function signInWithPhoneNumbe(phoneNumber) {
+  window.appVerifier = new RecaptchaVerifier("recaptcha-container", {}, auth);
 
-//       // signInWithPhoneNumber(auth, phonefield, recaptchaVerifier)
-//       // .then((confirmationResult) => {
-//       //     const verificationCode = prompt("oo");
-
-//       //     })
-//       //     .catch((err) => {
-//       //       console.error(err);
-//       //     });
-//     },
-//     "expired-callback": () => {
-//       // Response expired. Ask user to solve reCAPTCHA again.
-//       // ...
-//     },
-//   },
-//   auth
-// );
+  signInWithPhoneNumber(auth, phoneNumber, window.appVerifier)
+    .then(function (confirmationResult) {
+      // SMS verification code is sent to the user's phone
+      var verificationCode = prompt(
+        "Please enter the verification code sent to your mobile phone:"
+      );
+      return confirmationResult.confirm(verificationCode);
+    })
+    .then(function (result) {
+      // User is signed in successfully
+      console.log(result.user);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
