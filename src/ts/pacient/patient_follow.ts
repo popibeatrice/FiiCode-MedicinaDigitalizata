@@ -5,7 +5,7 @@ import { EmailAuthProvider, linkWithCredential } from "firebase/auth";
 
 // variabile
 const form = document.querySelector("form");
-form.addEventListener("click", (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
   const email = form.email.value;
   const pass = form.pass.value;
