@@ -1,5 +1,12 @@
-import { auth } from "../firebase.ts";
+import { auth, db } from "../firebase.ts";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import {
+  collection,
+  where,
+  query,
+  documentId,
+  getDocs,
+} from "firebase/firestore";
 import intlTelInput from "intl-tel-input";
 // numar internat
 const number = document.querySelector("#phoneNumber");
@@ -11,6 +18,12 @@ var iti = intlTelInput(number, {
   formatOnDisplay: true,
 });
 
+// sunt mandru de acest async function
+async function getQuery(q) {
+  const querySnapshot = await getDocs(q);
+  if (querySnapshot.empty) throw TypeError("nu esti smecher");
+}
+
 const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -18,7 +31,13 @@ form.addEventListener("submit", (e) => {
     console.log("nu e bun");
     return;
   }
-  phoneSignIn(iti.getNumber());
+  const q = query(
+    collection(db, "invited_users"),
+    where(documentId(), "==", iti.getNumber())
+  );
+  getQuery(q).then(() => {
+    phoneSignIn(iti.getNumber());
+  });
 });
 
 function phoneSignIn(phoneNumber) {

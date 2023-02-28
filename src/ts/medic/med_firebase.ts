@@ -144,7 +144,7 @@ submit.addEventListener("click", (e) => {
 
             // backend info push
             const UID = auth.currentUser.uid; // cod unic user
-            setDoc(doc(db, "users", UID), {
+            setDoc(doc(db, "medici", UID), {
               medic: true,
               nume,
               prenume,

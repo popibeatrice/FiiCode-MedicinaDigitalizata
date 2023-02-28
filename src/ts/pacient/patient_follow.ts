@@ -1,7 +1,20 @@
 import "../../styles/index.css";
 import "../../styles/patient_follow.css";
 import { auth } from "../firebase";
-import { EmailAuthProvider, linkWithCredential } from "firebase/auth";
+import {
+  EmailAuthProvider,
+  linkWithCredential,
+  onAuthStateChanged,
+} from "firebase/auth";
+
+// redirect user if not signed
+onAuthStateChanged(auth, (user) => {
+  if (!user) location.href = "./index.html";
+  else {
+    console.log("alo");
+    console.log(user);
+  }
+});
 
 // variabile
 const form = document.querySelector("form");
