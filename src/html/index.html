@@ -195,6 +195,7 @@
         <h2 class="font-poppins text-lg font-semibold uppercase">User Login</h2>
         <!-- form -->
         <form
+          id="LastLogin"
           class="flex flex-col flex-wrap items-center justify-center gap-6 font-roboto"
           action=""
         >
@@ -212,6 +213,8 @@
               class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-10 text-opacity-70 sm:max-w-xs"
               type="text"
               placeholder="email address"
+              id="email"
+              ;
             />
           </div>
           <div class="password-icon relative">
@@ -226,8 +229,11 @@
             </div>
             <input
               class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-3 text-opacity-70 sm:max-w-xs"
-              type="text"
+              type="password"
+              autocomplete="new-password"
               placeholder="password"
+              id="password"
+              ;
             />
           </div>
           <div>
@@ -235,6 +241,7 @@
               class="w-[80px] cursor-pointer rounded-lg bg-somon px-3 py-1 text-sm uppercase shadow-2xl transition-colors duration-300 hover:bg-amber-800"
               type="submit"
               value="Log in"
+              id="finalLogin"
             />
           </div>
         </form>
