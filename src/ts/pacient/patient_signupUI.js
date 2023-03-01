@@ -1,5 +1,11 @@
 import { auth, db } from "../firebase.ts";
-import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import {
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+  EmailAuthProvider,
+  linkWithCredential,
+} from "firebase/auth";
 import {
   collection,
   where,
@@ -7,31 +13,18 @@ import {
   documentId,
   getDocs,
 } from "firebase/firestore";
-import intlTelInput from "intl-tel-input";
-// numar internat
-const number = document.querySelector("#phoneNumber");
-var iti = intlTelInput(number, {
-  // any initialisation options go here
-  utilsScript:
-    "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.min.js",
-  initialCountry: "ro",
-  formatOnDisplay: true,
-});
-var telnumber = "a";
-export {telnumber};
+import { iti, UIfollow } from "./intl-tel-inpt";
+
 // sunt mandru de acest async function
 async function getQuery(q) {
   const querySnapshot = await getDocs(q);
   if (querySnapshot.empty) throw TypeError("nu esti smecher");
-  else {
-  }
 }
 
 const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
-  //telnumber = iti.getNumber();
-  //console.log(telnumber);
   e.preventDefault();
+
   if (!iti.isValidNumber()) {
     console.log("nu e bun");
     return;
@@ -65,7 +58,30 @@ function phoneSignIn(phoneNumber) {
     })
     .then(function (result) {
       // User is signed in successfully
-      location.href = "./patient_follow.html";
+      UIfollow();
+      // variabile
+      const form = document.querySelector("form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = form.email.value;
+        const pass = form.pass.value;
+        const nume = form.nume.value;
+        const prenume = form.prenume.value;
+        const credential = EmailAuthProvider.credential(email, pass);
+        linkWithCredential(auth.currentUser, credential)
+          .then((usercred) => {
+            const UID = auth.currentUser.uid;
+            setDoc(doc(db, "pacienti", UID), {
+              nume,
+              prenume,
+            });
+            const user = usercred.user;
+            console.log(user);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
     })
     .catch(function (error) {
       console.error(error);
@@ -73,4 +89,3 @@ function phoneSignIn(phoneNumber) {
       location.reload();
     });
 }
-console.log(telnumber);

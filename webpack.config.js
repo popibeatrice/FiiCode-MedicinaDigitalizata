@@ -6,7 +6,6 @@ module.exports = {
     index: "./src/ts/index.ts",
     med_signup: "./src/ts/medic/med_signup.ts",
     patient_signup: "./src/ts/pacient/patient_signup.ts",
-    patient_follow: "./src/ts/pacient/patient_follow.ts",
   },
   mode: "development",
   devServer: {
@@ -55,12 +54,6 @@ module.exports = {
       filename: "patient_signup.html",
       template: "src/html/patient_signup.html",
       chunks: ["patient_signup"],
-    }),
-    new HtmlWebpackPlugin({
-      // Also generate a test.html
-      filename: "patient_follow.html",
-      template: "src/html/patient_follow.html",
-      chunks: ["patient_follow"],
     }),
   ],
   output: {
