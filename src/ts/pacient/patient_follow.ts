@@ -7,7 +7,9 @@ import {
   linkWithCredential,
   onAuthStateChanged,
 } from "firebase/auth";
+import {telnumber} from "./patient_signupUI.js"
 
+console.log(telnumber);
 // redirect user if not signed
 onAuthStateChanged(auth, (user) => {
   if (!user) location.href = "./index.html";

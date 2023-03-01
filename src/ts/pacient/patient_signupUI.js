@@ -17,15 +17,20 @@ var iti = intlTelInput(number, {
   initialCountry: "ro",
   formatOnDisplay: true,
 });
-
+var telnumber = "a";
+export {telnumber};
 // sunt mandru de acest async function
 async function getQuery(q) {
   const querySnapshot = await getDocs(q);
   if (querySnapshot.empty) throw TypeError("nu esti smecher");
+  else {
+  }
 }
 
 const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
+  //telnumber = iti.getNumber();
+  //console.log(telnumber);
   e.preventDefault();
   if (!iti.isValidNumber()) {
     console.log("nu e bun");
@@ -36,7 +41,9 @@ form.addEventListener("submit", (e) => {
     where(documentId(), "==", iti.getNumber())
   );
   getQuery(q).then(() => {
-    phoneSignIn(iti.getNumber());
+    {
+      phoneSignIn(iti.getNumber());
+    }
   });
 });
 
@@ -66,3 +73,4 @@ function phoneSignIn(phoneNumber) {
       location.reload();
     });
 }
+console.log(telnumber);
