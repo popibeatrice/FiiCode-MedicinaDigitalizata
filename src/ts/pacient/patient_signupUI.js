@@ -26,7 +26,8 @@ async function getDuery(medicRef) {
   if (docSnap.exists()) return docSnap.data().medic;
   else throw TypeError("nu esti docos");
 }
-const form = document.querySelector("form");
+const form = document.querySelector("#formix");
+const main = document.querySelector("main");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -63,14 +64,17 @@ function phoneSignIn(phoneNumber) {
       return confirmationResult.confirm(verificationCode);
     })
     .then(function (result) {
-      // User is signed in successfully
-      UIfollow();
       // variabile
-      const form = document.querySelector("form");
+      const vrajeala = document.querySelector("#vrajeala");
+      const form1 = document.querySelector("#formux");
       const passRef = document.querySelector("#pass");
       const passConf = document.querySelector("#passconf");
-      const PasswordField = documet.querySelector(".password-regex");
+      const PasswordField = document.querySelector(".password-regex");
       const passRegEx = /^(.{0,7}|[^a-z]{1,}|[^A-Z]{1,}|[^\d]{1,})$|[\s]/;
+      main.classList.remove("flex");
+      main.classList.add("hidden");
+      vrajeala.classList.remove("hidden");
+      vrajeala.classList.add("flex");
       // pass conf
       passRef.addEventListener("keyup", () => {
         if (passRef.value === "") {
@@ -102,12 +106,12 @@ function phoneSignIn(phoneNumber) {
         }
       });
 
-      form.addEventListener("submit", (e) => {
+      form1.addEventListener("submit", (e) => {
         e.preventDefault();
-        const email = form.email.value;
-        const pass = form.pass.value;
-        const nume = form.nume.value;
-        const prenume = form.prenume.value;
+        const email = form1.email.value;
+        const pass = form1.pass.value;
+        const nume = form1.nume.value;
+        const prenume = form1.prenume.value;
 
         // verificari
         if (email === "" || pass === "" || nume === "" || prenume === "") {
@@ -138,7 +142,7 @@ function phoneSignIn(phoneNumber) {
               .catch((err) => {
                 console.log(err);
               });
-            form.reset();
+            form1.reset();
           })
           .catch((err) => {
             console.log(err);
