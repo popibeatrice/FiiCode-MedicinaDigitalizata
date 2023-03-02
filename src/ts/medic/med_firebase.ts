@@ -161,9 +161,11 @@ submit.addEventListener("click", (e) => {
             const ImageRef_med = ref(storage, `${UID}/${medCard.name}`);
             uploadString(ImageRef_med, imgMed as string, "data_url");
             signupForm.reset();
+            location.href = "./med_main.html";
           };
         };
       } else alert("emailul nu e confirmat");
+
     })
     .catch((err) => {
       console.log(err);

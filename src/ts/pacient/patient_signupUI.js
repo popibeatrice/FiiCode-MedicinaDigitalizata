@@ -137,12 +137,14 @@ function phoneSignIn(phoneNumber) {
                   nume,
                   prenume,
                   medic,
-                });
+                }).then(() => {
+                  form1.reset();
+                  location.href = "./patient_main.html";
+                })
               })
               .catch((err) => {
                 console.log(err);
               });
-            form1.reset();
           })
           .catch((err) => {
             console.log(err);
