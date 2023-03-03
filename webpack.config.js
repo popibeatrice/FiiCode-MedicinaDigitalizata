@@ -1,6 +1,8 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 module.exports = {
   entry: {
     index: "./src/ts/index.ts",
@@ -31,14 +33,18 @@ module.exports = {
       {
         test: /\.css$/i,
         include: path.resolve(__dirname, "src"),
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
       },
     ],
+  },
+  optimization: {
+    minimizer: [`...`, new CssMinimizerPlugin()],
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       // Also generate a test.html
       filename: "index.html",
@@ -48,25 +54,25 @@ module.exports = {
     new HtmlWebpackPlugin({
       // Also generate a test.html
       filename: "med_signup.html",
-      template: "src/html/med_signup.html",
+      template: "src/html/medic/med_signup.html",
       chunks: ["med_signup"],
     }),
     new HtmlWebpackPlugin({
       // Also generate a test.html
       filename: "patient_signup.html",
-      template: "src/html/patient_signup.html",
+      template: "src/html/pacient/patient_signup.html",
       chunks: ["patient_signup"],
     }),
     new HtmlWebpackPlugin({
       // Also generate a test.html
       filename: "med_main.html",
-      template: "src/html/med_main.html",
+      template: "src/html/medic/med_main.html",
       chunks: ["med_main"],
     }),
     new HtmlWebpackPlugin({
       // Also generate a test.html
       filename: "patient_main.html",
-      template: "src/html/patient_main.html",
+      template: "src/html/pacient/patient_main.html",
       chunks: ["patient_main"],
     }),
   ],
