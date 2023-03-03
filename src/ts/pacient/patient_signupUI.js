@@ -14,7 +14,7 @@ import {
   getDocs,
   getDoc,
 } from "firebase/firestore";
-import { iti, UIfollow } from "./intl-tel-inpt";
+import { iti } from "./intl-tel-inpt";
 var telefon;
 // sunt mandru de acest async function
 async function getQuery(q) {
@@ -140,7 +140,7 @@ function phoneSignIn(phoneNumber) {
                 }).then(() => {
                   form1.reset();
                   location.href = "./patient_main.html";
-                })
+                });
               })
               .catch((err) => {
                 console.log(err);
