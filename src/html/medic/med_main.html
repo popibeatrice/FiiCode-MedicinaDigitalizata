@@ -99,6 +99,93 @@
     <title>med main</title>
   </head>
   <body>
-    <p>pipi</p>
+    <header class="font-poppins">
+      <div class="dropdown flex flex-row items-center justify-between">
+        <div class="flex items-center justify-center gap-2">
+          <img
+            src="../../assets/icons/logo.png"
+            class="pointer-events-none h-20 w-20 xl:h-24 xl:w-24"
+            alt="Logo MenUmed"
+          />
+          <span
+            class="hidden font-poppins text-lg font-bold sm:block sm:text-xl md:text-2xl"
+            ><span class="text-xl text-logo_blue sm:text-2xl md:text-3xl"
+              >Me</span
+            >n<span class="text-xl text-logo_blue sm:text-2xl md:text-3xl"
+              >U</span
+            >med</span
+          >
+        </div>
+        <!-- nav -->
+        <nav class="mx-10 hidden text-logo_blue xs:block md:text-lg">
+          <a
+            class="mx-3 font-semibold duration-300 hover:text-logo_d_blue"
+            href="#"
+            >Program</a
+          >
+          <a
+            class="mx-3 font-semibold duration-300 hover:text-logo_d_blue"
+            href="#"
+            >Pacienti</a
+          >
+          <a
+            class="ml-3 font-semibold duration-300 hover:text-logo_d_blue"
+            href="#"
+            >Nume Prenume</a
+          >
+        </nav>
+        <div class="xs:hidden">
+          <button class="meniu relative mx-6 block h-6 w-6 cursor-pointer">
+            <div class="bar"></div>
+            <nav
+              class="mobile-nav absolute right-[-20rem] top-10 flex flex-col"
+            >
+              <a
+                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left text-white font-roboto"
+                href="#"
+                >Program</a
+              >
+              <a
+                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left text-white font-roboto"
+                >Pacienti</a
+              >
+              <a
+                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left text-white font-roboto"
+                href="#"
+                >Nume Prenume</a
+              >
+            </nav>
+          </button>
+        </div>
+      </div>
+      <!-- logo -->
+    </header>
+
+    <!-- <nav class="flex items-center justify-between">
+      <div id="dropdown" class="z-30">
+        <div class="">
+          <img
+            class="mx-4 h-6 w-6 cursor-pointer"
+            src="../assets/icons/menu.png"
+            alt="meniu"
+          />
+        </div>
+        <ul
+          id="menu"
+          class="absolute right-4 flex scale-0 flex-col gap-3 rounded-md bg-logo_d_blue bg-opacity-90 p-3 text-white shadow-xl"
+        >
+          <li class="duration-300 hover:text-somon">
+            <a href="#">Pacienti</a>
+          </li>
+          <li class="duration-300 hover:text-somon"><a href="#">Program</a></li>
+          <li class="duration-300 hover:text-somon">
+            <a href="#">Nume Prenume</a>
+          </li>
+        </ul>
+      </div>
+    </nav>  -->
+    <div
+      class="wrapper pointer-events-none fixed inset-0 z-20 bg-black opacity-0"
+    ></div>
   </body>
 </html>

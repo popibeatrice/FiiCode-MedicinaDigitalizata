@@ -1,0 +1,34 @@
+.bar {
+    content: "";
+    width: 100%;
+    margin: 5px 0;
+    background: black;
+    height: 3px;
+  }
+  .meniu::after,
+  .meniu::before {
+    content: "";
+    display: block;
+    margin: 5px 0;
+    width: 100%;
+    background: black;
+    height: 3px;
+    left: 1px;
+    transition: 0.4s;
+  }
+  .meniu.is-active::after {
+    transform: rotate(45deg) translate(-8px, -7px);
+  }
+  .meniu.is-active::before {
+    transform: rotate(-45deg) translate(-4px, 4px);
+  }
+  .meniu.is-active .bar {
+    opacity: 0;
+  }
+  .meniu .mobile-nav {
+    transition: 0.4s;
+  }
+  .meniu.is-active .mobile-nav {
+    transform: translate(-20rem);
+  }
+  
