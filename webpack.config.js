@@ -10,6 +10,7 @@ module.exports = {
     patient_signup: "./src/ts/pacient/patient_signup.ts",
     med_main: "./src/ts/medic/med_main.ts",
     patient_main: "./src/ts/pacient/patient_main.ts",
+    med_patientpg: "./src/ts/medic/med_patientpg.ts",
   },
   mode: "development",
   devServer: {
@@ -22,7 +23,7 @@ module.exports = {
         loader: "html-loader",
       },
       {
-        test: /\.(jpg|png|jpeg|svg|gif)$/,
+        test: /\.(jpg|png|jpeg|svg|gif|pdf)$/,
         type: "asset/resource",
       },
       {
@@ -74,6 +75,12 @@ module.exports = {
       filename: "patient_main.html",
       template: "src/html/pacient/patient_main.html",
       chunks: ["patient_main"],
+    }),
+    new HtmlWebpackPlugin({
+      // Also generate a test.html
+      filename: "med_patientpg.html",
+      template: "src/html/medic/med_patientpg.html",
+      chunks: ["med_patientpg"],
     }),
   ],
   output: {

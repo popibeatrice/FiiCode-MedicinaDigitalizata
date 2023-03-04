@@ -1,0 +1,1 @@
+(()=>{"use strict";var e=document.querySelector(".meniu");document.querySelector(".mobile-nav"),e.addEventListener("click",(function(t){e.classList.toggle("is-active")}))})();

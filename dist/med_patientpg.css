@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&family=Roboto&display=swap);body{background-image:url(cea86346b574b9072095.jpg)}#join{position:relative}#join:before{background:#ee6c4d;content:"";height:100%;inset:0 0;position:absolute;transform:scaleX(0);transform-origin:0 0;transition:transform .3s ease-in-out;width:100%;z-index:-1}#join:hover:before{transform:scaleX(1)}#login{transition:background-color .3s ease-in-out}#login,.login-popup{-webkit-backface-visibility:hidden;-webkit-transform:translateZ(0)}.login-popup{transition:transform .3s ease-in-out}
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&family=Roboto&display=swap);body{animation:gradient 15s ease infinite;background:linear-gradient(-45deg,#00a3d0,#293241);background-size:400% 400%;min-height:100vh}@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}to{background-position:0 50%}}
 
 /*
 ! tailwindcss v3.0.1 | MIT License | https://tailwindcss.com
