@@ -1,9 +1,9 @@
 import "../../styles/medic/med_main.css";
 import "../../styles/index.css";
-import { getDoc, doc} from "firebase/firestore";
-import { db,auth } from "../firebase";
+import { getDoc, doc } from "firebase/firestore";
+import { db, auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 const menuBtn = document.querySelector(".meniu");
-const navList = document.querySelector(".mobile-nav");
 menuBtn.addEventListener("click", (e) => {
   menuBtn.classList.toggle("is-active");
 });
@@ -13,9 +13,9 @@ const finalInvite = document.querySelector("#finalInvite");
 const PacientInvitation = document.querySelector(".PacientInvite");
 const inviteWrapper = document.querySelector(".invite-wrapper");
 const InviteForm = document.querySelector(".invite-form") as HTMLFormElement;
-
-const user = auth.currentUser.uid;
-console.log(user);
+onAuthStateChanged(auth, (user) => {
+  if (user) console.log(user);
+});
 
 invitationBtn.addEventListener("click", (e) => {
   PacientInvitation.classList.remove("scale-0");
@@ -28,6 +28,5 @@ inviteWrapper.addEventListener("click", (e) => {
   inviteWrapper.classList.add("pointer-events-none");
 });
 // finalInvite.addEventListener("click", (e) => {
-  
-// })
 
+// })

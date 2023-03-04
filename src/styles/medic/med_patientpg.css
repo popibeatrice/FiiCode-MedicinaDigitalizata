@@ -1,18 +1,36 @@
-body {
-  background: linear-gradient(-45deg, #00a3d0, #293241);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  min-height: 100vh;
+.custom_h {
+  min-height: calc(100vh - 96px);
 }
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.bar {
+  content: "";
+  width: 100%;
+  margin: 5px 0;
+  background: black;
+  height: 3px;
+}
+.meniu::after,
+.meniu::before {
+  content: "";
+  display: block;
+  margin: 5px 0;
+  width: 100%;
+  background: black;
+  height: 3px;
+  left: 1px;
+  transition: 0.4s;
+}
+.meniu.is-active::after {
+  transform: rotate(45deg) translate(-8px, -7px);
+}
+.meniu.is-active::before {
+  transform: rotate(-45deg) translate(-4px, 4px);
+}
+.meniu.is-active .bar {
+  opacity: 0;
+}
+.meniu .mobile-nav {
+  transition: 0.4s;
+}
+.meniu.is-active .mobile-nav {
+  transform: translate(-20rem);
 }
