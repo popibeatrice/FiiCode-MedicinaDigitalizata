@@ -16,6 +16,7 @@ module.exports = {
         logo_blue: "#00a3d0",
         somon: "#ee6c4d",
         logo_d_blue: "#293241",
+        moviu: "rgba(102, 51, 255,.8)",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

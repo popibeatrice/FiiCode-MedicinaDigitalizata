@@ -112,9 +112,22 @@ function phoneSignIn(phoneNumber) {
         const pass = form1.pass.value;
         const nume = form1.nume.value;
         const prenume = form1.prenume.value;
+        const jud = form1.jud.value;
+        const loc = form1.loc.value;
+        const strada = form1.strada.value;
+        const varsta = form1.varsta.value;
 
         // verificari
-        if (email === "" || pass === "" || nume === "" || prenume === "") {
+        if (
+          email === "" ||
+          pass === "" ||
+          nume === "" ||
+          prenume === "" ||
+          jud === "" ||
+          loc === "" ||
+          varsta === "" ||
+          strada === ""
+        ) {
           alert("completati campurile");
           return;
         } else if (passRegEx.test(pass) === true) {
@@ -136,6 +149,10 @@ function phoneSignIn(phoneNumber) {
                 setDoc(doc(db, "pacienti", UID), {
                   nume,
                   prenume,
+                  varsta,
+                  jud,
+                  loc,
+                  strada,
                   medic,
                 }).then(() => {
                   form1.reset();

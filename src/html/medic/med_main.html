@@ -98,12 +98,13 @@
     />
     <title>med main</title>
   </head>
-  <body>
-    <header
-      class="border-b-4 border-logo_blue bg-logo_d_blue bg-opacity-30 font-poppins"
-    >
+  <body class="-z-10 overflow-x-hidden bg-neutral-100">
+    <header class="bg-moviu font-poppins">
       <div class="dropdown flex flex-row items-center justify-between">
-        <div class="flex items-center justify-center gap-2">
+        <a
+          href="./med_main.html"
+          class="flex items-center justify-center gap-2"
+        >
           <img
             src="../../assets/icons/logo.png"
             class="pointer-events-none h-20 w-20 xl:h-24 xl:w-24"
@@ -117,7 +118,7 @@
               >U</span
             >med</span
           >
-        </div>
+        </a>
         <!-- nav -->
         <nav class="mx-10 hidden text-white xs:block md:text-lg">
           <a class="mx-3 duration-300 hover:text-logo_blue" href="#">Program</a>
@@ -154,7 +155,8 @@
       </div>
       <!-- logo -->
     </header>
-    <main class="flex h-[87vh] w-screen items-center">
+    <main class="custom_h relative flex w-full items-start">
+      <canvas></canvas>
       <div class="py-10 px-5">
         <h1 class="font-poppins text-xl font-semibold">
           Welcome, <span class="text-logo_blue">Name</span>
@@ -169,36 +171,37 @@
         </button>
       </div>
       <!-- <div><img src="../../assets/icons/Medicel.png" alt=""></div> -->
+
+      <article
+        class="PacientInvite absolute top-1/2 left-1/2 z-30 h-[260px] w-5/6 max-w-xs -translate-x-1/2 -translate-y-1/2 scale-0 flex-col items-center rounded-xl bg-logo_d_blue text-white sm:max-w-sm xl:max-w-lg"
+      >
+        <div class="mt-5 text-center text-lg">Invita un pacient</div>
+        <form action="" class="invite-form mt-6 ml-5">
+          <div class="my-4 flex flex-col">
+            <label for="">Numarul pacientului</label>
+            <input
+              type="text"
+              id="phone"
+              class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-10 text-opacity-70 sm:max-w-xs"
+            />
+          </div>
+          <div class="mb-4 flex flex-col">
+            <label for="">Emailul pacientului</label>
+            <input
+              type="text"
+              id="email"
+              class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-10 text-opacity-70 sm:max-w-xs"
+            />
+          </div>
+          <input
+            class="w-[80px] cursor-pointer rounded-lg bg-somon px-3 py-1 text-lg shadow-2xl transition-colors duration-300 hover:bg-amber-800"
+            type="submit"
+            value="Invita"
+            id="finalInvite"
+          />
+        </form>
+      </article>
     </main>
-    <article
-      class="PacientInvite absolute top-1/2 left-1/2 z-30 h-[260px] w-5/6 max-w-xs -translate-x-1/2 -translate-y-1/2 scale-0 flex-col items-center rounded-xl bg-logo_d_blue text-white sm:max-w-sm xl:max-w-lg"
-    >
-      <div class="mt-5 text-center text-lg">Invita un pacient</div>
-      <form action="" class="invite-form mt-6 ml-5">
-        <div class="my-4 flex flex-col">
-          <label for="">Numarul pacientului</label>
-          <input
-            type="text"
-            id = "phone"
-            class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-10 text-opacity-70 sm:max-w-xs"
-          />
-        </div>
-        <div class="mb-4 flex flex-col">
-          <label for="">Emailul pacientului</label>
-          <input
-            type="text"
-            id = "email"
-            class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-10 text-opacity-70 sm:max-w-xs"
-          />
-        </div>
-        <input
-          class="w-[80px] cursor-pointer rounded-lg bg-somon px-3 py-1 text-lg shadow-2xl transition-colors duration-300 hover:bg-amber-800"
-          type="submit"
-          value="Invita"
-          id="finalInvite"
-        />
-      </form>
-    </article>
     <div
       class="invite-wrapper pointer-events-none fixed inset-0 z-20 bg-black opacity-0"
     ></div>
@@ -262,12 +265,15 @@
     <div
       class="wrapper pointer-events-none fixed inset-0 z-20 bg-black opacity-0"
     ></div>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
     <script>
-      (function() {
-          // https://dashboard.emailjs.com/admin/account
-          emailjs.init('eDZv1Feg6iEr-LyFk');
+      (function () {
+        // https://dashboard.emailjs.com/admin/account
+        emailjs.init("eDZv1Feg6iEr-LyFk");
       })();
-  </script>
+    </script>
   </body>
 </html>
