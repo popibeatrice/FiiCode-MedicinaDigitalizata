@@ -34,3 +34,40 @@
 .meniu.is-active .mobile-nav {
   transform: translate(-20rem);
 }
+.scrolol {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrolol::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.arrow {
+  text-align: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 4rem;
+  border: none;
+  width: 2rem;
+  font-size: 3rem;
+  cursor: pointer;
+  background: #00a3d0;
+  padding-bottom: 2rem;
+  opacity: 0.5;
+  transition: opacity 100ms;
+}
+.arrow:hover {
+  opacity: 1;
+}
+#spate {
+  left: 0;
+  padding-left: 0.25rem;
+  border-radius: 0 2rem 2rem 0;
+}
+#fata {
+  right: 0;
+  padding-left: 0.75rem;
+  border-radius: 2rem 0 0 2rem;
+}

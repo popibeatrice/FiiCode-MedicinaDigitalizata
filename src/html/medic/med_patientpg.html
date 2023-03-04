@@ -157,16 +157,22 @@
       </div>
       <!-- logo -->
     </header>
-    <div class="custom_h flex w-full items-center justify-start">
-      <div class="flex items-start justify-start gap-5 bg-white py-2 px-3">
+    <div
+      class="custom_h mt-16 flex w-full justify-center xs:mt-0 xs:items-center xs:justify-start"
+    >
+      <div
+        class="flex flex-col items-center gap-14 bg-white py-2 px-3 xs:flex-row xs:items-start xs:justify-start xs:gap-5"
+      >
         <img
-          class="hidden h-64 w-64 xs:block xs:h-72 xs:w-72 md:h-96 md:w-96 lg:h-auto lg:w-auto"
+          class="order-2 h-64 w-64 xs:order-1 xs:block xs:h-72 xs:w-72 md:h-96 md:w-96 lg:h-auto lg:w-auto"
           src="../../assets/stickers/doctor_chair.png"
           alt=""
         />
-        <div class="flex flex-col items-start justify-start gap-5 text-left">
+        <div
+          class="order-1 flex flex-col items-start justify-start gap-5 text-left"
+        >
           <h1
-            class="w-min font-poppins text-3xl font-semibold text-logo_blue sm:text-5xl md:text-6xl lg:text-8xl"
+            class="font-poppins text-3xl font-semibold text-logo_blue xs:w-min sm:text-5xl md:text-6xl lg:text-8xl"
           >
             Nume Pacient
           </h1>
@@ -190,35 +196,62 @@
           >
             <span class="text-logo_blue">Strada:</span> Izvoarelor</span
           >
+          <div
+            class="flex flex-col items-stretch justify-start gap-3 md:flex-row lg:gap-8"
+          >
+            <button
+              class="w-40 rounded-md bg-logo_blue py-2 font-poppins text-white transition-colors duration-300 hover:bg-moviu lg:text-xl"
+              id="posteaza"
+            >
+              Fisa Medicala
+            </button>
+            <form
+              class="hidden"
+              action=""
+              method="post"
+              enctype="multipart/form-data"
+            >
+              <input type="file" name="" id="fisa" accept="application/pdf" />
+            </form>
+            <button
+              class="w-40 rounded-md bg-logo_blue py-2 font-poppins text-white transition-colors duration-300 hover:bg-moviu lg:text-xl"
+              id="trimite"
+            >
+              Transfera Pacient
+            </button>
+          </div>
         </div>
       </div>
     </div>
     <div class="mb-10 flex items-start justify-center">
       <div
-        class="flex w-[250px] flex-col gap-10 overflow-x-hidden xxs:w-[325px] xs:w-[450px] md:w-[625px] lg:w-[850px]"
+        class="relative flex w-[250px] flex-col gap-10 overflow-x-hidden xxs:w-[325px] xs:w-[450px] md:w-[625px] lg:w-[850px]"
       >
         <h2
           class="self-center font-poppins text-2xl font-semibold text-logo_blue sm:text-3xl md:text-4xl lg:text-5xl"
         >
           Istoric medical
         </h2>
-
-        <ul class="flex w-full flex-row overflow-x-scroll rounded-md">
-          <li class="w-full">
+        <button class="arrow" id="spate"></button>
+        <button class="arrow" id="fata"></button>
+        <ul
+          class="scrolol flex w-full overflow-x-scroll scroll-smooth rounded-md"
+        >
+          <li class="slide w-full">
             <object
               class="h-[850px] w-[225px] xxs:w-[300px] xs:w-[450px] md:w-[625px] lg:w-[850px]"
               data="../../assets/pdfs/Get_Started_With_Smallpdf.pdf"
               type="application/pdf"
             ></object>
           </li>
-          <li class="w-full">
+          <li class="slide w-full">
             <object
               class="h-[850px] w-[225px] xxs:w-[300px] xs:w-[450px] md:w-[625px] lg:w-[850px]"
               data="../../assets/pdfs/Get_Started_With_Smallpdf.pdf"
               type="application/pdf"
             ></object>
           </li>
-          <li class="w-full">
+          <li class="slide w-full">
             <object
               class="h-[850px] w-[225px] xxs:w-[300px] xs:w-[450px] md:w-[625px] lg:w-[850px]"
               data="../../assets/pdfs/Get_Started_With_Smallpdf.pdf"
