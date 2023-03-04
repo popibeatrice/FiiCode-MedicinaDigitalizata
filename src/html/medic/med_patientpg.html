@@ -99,9 +99,7 @@
     <title>pacient</title>
   </head>
   <body class="w-full overflow-x-hidden font-roboto">
-    <header
-      class="border-b-4 border-logo_blue bg-logo_d_blue bg-opacity-30 font-poppins"
-    >
+    <header class="font-poppins">
       <div class="dropdown flex flex-row items-center justify-between">
         <a
           href="./med_main.html"
@@ -112,51 +110,53 @@
             class="pointer-events-none h-20 w-20 xl:h-24 xl:w-24"
             alt="Logo MenUmed"
           />
-          <span
-            class="hidden font-poppins text-lg font-bold text-white sm:block sm:text-xl md:text-2xl"
-            ><span class="text-xl text-logo_blue sm:text-2xl md:text-3xl"
-              >Me</span
-            >n<span class="text-xl text-logo_blue sm:text-2xl md:text-3xl"
-              >U</span
-            >med</span
-          >
         </a>
         <!-- nav -->
         <nav class="mx-10 hidden text-white xs:block md:text-lg">
-          <a class="mx-3 duration-300 hover:text-logo_blue" href="#">Program</a>
-          <a class="mx-3 duration-300 hover:text-logo_blue" href="#"
-            >Pacienti</a
-          >
-          <a class="ml-3 duration-300 hover:text-logo_blue" href="#"
-            >Nume Prenume</a
-          >
+          <ul class="flex text-logo_blue">
+            <li class="cursor-pointer duration-300 hover:text-moviu">
+              <a class="mx-3" href="#">Program</a>
+            </li>
+            <li class="cursor-pointer duration-300 hover:text-moviu">
+              <a class="mx-3" href="#">Pacienti</a>
+            </li>
+            <li class="cursor-pointer duration-300 hover:text-moviu">
+              <a class="ml-3" href="#">Nume Prenume</a>
+            </li>
+          </ul>
         </nav>
-        <div class="xs:hidden">
+        <div class="z-30 xs:hidden">
           <button class="meniu relative mx-6 block h-6 w-6 cursor-pointer">
             <div class="bar"></div>
             <nav
               class="mobile-nav absolute right-[-20rem] top-10 flex flex-col"
             >
-              <a
-                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left font-roboto text-white"
-                href="#"
-                >Program</a
-              >
-              <a
-                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left font-roboto text-white"
-                >Pacienti</a
-              >
-              <a
-                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left font-roboto text-white"
-                href="#"
-                >Nume Prenume</a
-              >
+              <ul class="flex flex-col">
+                <li
+                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-90 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
+                >
+                  <a class="" href="#">Account</a>
+                </li>
+                <li
+                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-90 py-2 px-2 text-left font-roboto text-moviu text-white duration-500 hover:bg-moviu hover:text-white"
+                >
+                  <a class="" href="#">Program</a>
+                </li>
+                <li
+                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-90 py-2 px-2 text-left font-roboto text-moviu text-white duration-500 hover:bg-moviu hover:text-white"
+                >
+                  <a class="">Pacienti</a>
+                </li>
+              </ul>
             </nav>
           </button>
         </div>
       </div>
       <!-- logo -->
     </header>
+    <div
+      class="meniu-wrapper pointer-events-none fixed inset-0 z-20 bg-black opacity-0"
+    ></div>
     <div
       class="custom_h mt-16 flex w-full justify-center xs:mt-0 xs:items-center xs:justify-start"
     >

@@ -5,8 +5,21 @@ import { ref, uploadString, listAll, getDownloadURL } from "firebase/storage";
 
 // nav burgur dropdown
 const menuBtn = document.querySelector(".meniu");
+const MeniuWrapper = document.querySelector(".meniu-wrapper");
 menuBtn.addEventListener("click", (e) => {
   menuBtn.classList.toggle("is-active");
+  if (menuBtn.classList.contains("is-active")) {
+    MeniuWrapper.classList.add("opacity-[75%]");
+    MeniuWrapper.classList.remove("pointer-events-none");
+  } else {
+    MeniuWrapper.classList.remove("opacity-[75%]");
+    MeniuWrapper.classList.add("pointer-events-none");
+  }
+});
+MeniuWrapper.addEventListener("click", (e) => {
+  menuBtn.classList.remove("is-active");
+  MeniuWrapper.classList.remove("opacity-[75%]");
+  MeniuWrapper.classList.add("pointer-events-none");
 });
 
 // carusel
