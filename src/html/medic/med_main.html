@@ -98,7 +98,7 @@
     />
     <title>med main</title>
   </head>
-  <body class="-z-10 overflow-x-hidden bg-blue-200">
+  <body class="-z-10 overflow-x-hidden">
     <header class="font-poppins">
       <div class="dropdown flex flex-row items-center justify-between">
         <a
@@ -110,62 +110,68 @@
             class="pointer-events-none h-20 w-20 xl:h-24 xl:w-24"
             alt="Logo MenUmed"
           />
-          <span
-            class="hidden font-poppins text-lg font-bold text-white sm:block sm:text-xl md:text-2xl"
-            ><span class="text-xl text-logo_blue sm:text-2xl md:text-3xl"
-              >Me</span
-            >n<span class="text-xl text-logo_blue sm:text-2xl md:text-3xl"
-              >U</span
-            >med</span
-          >
         </a>
         <!-- nav -->
         <nav class="mx-10 hidden text-white xs:block md:text-lg">
-          <a class="mx-3 duration-300 hover:text-logo_blue" href="#">Program</a>
-          <a class="mx-3 duration-300 hover:text-logo_blue" href="#"
-            >Pacienti</a
-          >
-          <a class="ml-3 duration-300 hover:text-logo_blue" href="#"
-            >Nume Prenume</a
-          >
+          <ul class="flex text-logo_blue">
+            <li class="cursor-pointer duration-300 hover:text-moviu">
+              <a class="mx-3" href="#">Program</a>
+            </li>
+            <li class="cursor-pointer duration-300 hover:text-moviu">
+              <a class="mx-3" href="#">Pacienti</a>
+            </li>
+            <li class="cursor-pointer duration-300 hover:text-moviu">
+              <a class="ml-3" href="#">Nume Prenume</a>
+            </li>
+          </ul>
         </nav>
-        <div class="xs:hidden">
+        <div class="z-30 xs:hidden">
           <button class="meniu relative mx-6 block h-6 w-6 cursor-pointer">
             <div class="bar"></div>
             <nav
               class="mobile-nav absolute right-[-20rem] top-10 flex flex-col"
             >
-              <a
-                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left font-roboto text-white"
-                href="#"
-                >Program</a
-              >
-              <a
-                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left font-roboto text-white"
-                >Pacienti</a
-              >
-              <a
-                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left font-roboto text-white"
-                href="#"
-                >Nume Prenume</a
-              >
+              <ul class="flex flex-col">
+                <li
+                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-90 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
+                >
+                  <a class="" href="#">Account</a>
+                </li>
+                <li
+                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-90 py-2 px-2 text-left font-roboto text-moviu text-white duration-500 hover:bg-moviu hover:text-white"
+                >
+                  <a class="" href="#">Program</a>
+                </li>
+                <li
+                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-90 py-2 px-2 text-left font-roboto text-moviu text-white duration-500 hover:bg-moviu hover:text-white"
+                >
+                  <a class="">Pacienti</a>
+                </li>
+              </ul>
             </nav>
           </button>
         </div>
       </div>
       <!-- logo -->
     </header>
-    <main class="custom_h relative flex w-full items-start">
-      <canvas></canvas>
-      <div class="py-10 px-5">
-        <h1 class="font-poppins text-xl font-semibold">
-          Welcome, <span class="text-logo_blue">Name</span>
+    <div
+      class="meniu-wrapper pointer-events-none fixed inset-0 z-20 bg-black opacity-0"
+    ></div>
+
+    <main class="custom_h items-star relative flex w-full">
+      <canvas class="h-[50%]"></canvas>
+      <div class="mt-10 py-10 px-5 xs:ml-6 sm:ml-14 md:ml-40">
+        <h1 class="font-poppins text-3xl font-semibold sm:text-4xl md:text-5xl">
+          Welcome,<br />
+          <span class="medic-name text-logo_blue">Name</span>
         </h1>
-        <h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit</h3>
+        <h3 class="mt-3">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit
+        </h3>
         <p>Momentan nu aveti pacienti invitati</p>
         <button
           id="invitation"
-          class="text-md mt-10 rounded-md bg-logo_blue px-4 py-2 text-white transition-colors duration-300 hover:bg-logo_d_blue lg:text-xl"
+          class="text-md mt-6 rounded-md bg-logo_blue px-4 py-2 text-white transition-colors duration-300 hover:bg-moviu lg:text-xl"
         >
           Invita Pacienti
         </button>
@@ -173,16 +179,23 @@
       <!-- <div><img src="../../assets/icons/Medicel.png" alt=""></div> -->
 
       <article
-        class="PacientInvite absolute top-1/2 left-1/2 z-30 h-[260px] w-5/6 max-w-xs -translate-x-1/2 -translate-y-1/2 scale-0 flex-col items-center rounded-xl bg-logo_d_blue text-white sm:max-w-sm xl:max-w-lg"
+        class="PacientInvite fixed top-1/2 left-1/2 z-30 h-[260px] w-5/6 max-w-xs -translate-x-1/2 -translate-y-1/2 scale-0 flex-col items-center rounded-xl bg-logo_d_blue bg-opacity-80 text-white sm:max-w-sm xl:max-w-lg"
       >
-        <div class="mt-5 text-center text-lg">Invita un pacient</div>
-        <form action="" class="invite-form mt-6 ml-5">
+        <div
+          class="closeInvite-login absolute right-5 top-2 cursor-pointer self-end text-lg transition-all hover:scale-150 hover:text-logo_blue"
+        >
+          &times;
+        </div>
+        <div class="mt-5 text-center font-poppins text-lg sm:text-xl">
+          Invita un pacient
+        </div>
+        <form action="" class="invite-form mt-3 flex flex-col items-center">
           <div class="my-4 flex flex-col">
             <label for="">Numarul pacientului</label>
             <input
               type="text"
               id="phone"
-              class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-10 text-opacity-70 sm:max-w-xs"
+              class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-2 text-opacity-70 sm:max-w-xs"
             />
           </div>
           <div class="mb-4 flex flex-col">
@@ -190,11 +203,11 @@
             <input
               type="text"
               id="email"
-              class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-10 text-opacity-70 sm:max-w-xs"
+              class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-2 text-opacity-70 sm:max-w-xs"
             />
           </div>
           <input
-            class="w-[80px] cursor-pointer rounded-lg bg-somon px-3 py-1 text-lg shadow-2xl transition-colors duration-300 hover:bg-amber-800"
+            class="mr-5 w-[80px] cursor-pointer self-end rounded-lg bg-logo_blue px-3 py-1 text-lg shadow-2xl transition-colors duration-300 hover:bg-moviu"
             type="submit"
             value="Invita"
             id="finalInvite"
