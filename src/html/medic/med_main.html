@@ -99,7 +99,9 @@
     <title>med main</title>
   </head>
   <body>
-    <header class="font-poppins">
+    <header
+      class="border-b-4 border-logo_blue bg-logo_d_blue bg-opacity-30 font-poppins"
+    >
       <div class="dropdown flex flex-row items-center justify-between">
         <div class="flex items-center justify-center gap-2">
           <img
@@ -108,7 +110,7 @@
             alt="Logo MenUmed"
           />
           <span
-            class="hidden font-poppins text-lg font-bold sm:block sm:text-xl md:text-2xl"
+            class="hidden font-poppins text-lg font-bold text-white sm:block sm:text-xl md:text-2xl"
             ><span class="text-xl text-logo_blue sm:text-2xl md:text-3xl"
               >Me</span
             >n<span class="text-xl text-logo_blue sm:text-2xl md:text-3xl"
@@ -117,20 +119,12 @@
           >
         </div>
         <!-- nav -->
-        <nav class="mx-10 hidden text-logo_blue xs:block md:text-lg">
-          <a
-            class="mx-3 font-semibold duration-300 hover:text-logo_d_blue"
-            href="#"
-            >Program</a
-          >
-          <a
-            class="mx-3 font-semibold duration-300 hover:text-logo_d_blue"
-            href="#"
+        <nav class="mx-10 hidden text-white xs:block md:text-lg">
+          <a class="mx-3 duration-300 hover:text-logo_blue" href="#">Program</a>
+          <a class="mx-3 duration-300 hover:text-logo_blue" href="#"
             >Pacienti</a
           >
-          <a
-            class="ml-3 font-semibold duration-300 hover:text-logo_d_blue"
-            href="#"
+          <a class="ml-3 duration-300 hover:text-logo_blue" href="#"
             >Nume Prenume</a
           >
         </nav>
@@ -141,16 +135,16 @@
               class="mobile-nav absolute right-[-20rem] top-10 flex flex-col"
             >
               <a
-                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left text-white font-roboto"
+                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left font-roboto text-white"
                 href="#"
                 >Program</a
               >
               <a
-                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left text-white font-roboto"
+                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left font-roboto text-white"
                 >Pacienti</a
               >
               <a
-                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left text-white font-roboto"
+                class="m-2 w-40 rounded-md bg-logo_d_blue bg-opacity-90 py-2 px-2 text-left font-roboto text-white"
                 href="#"
                 >Nume Prenume</a
               >
@@ -160,32 +154,118 @@
       </div>
       <!-- logo -->
     </header>
-
-    <!-- <nav class="flex items-center justify-between">
-      <div id="dropdown" class="z-30">
-        <div class="">
-          <img
-            class="mx-4 h-6 w-6 cursor-pointer"
-            src="../assets/icons/menu.png"
-            alt="meniu"
+    <main class="flex h-[87vh] w-screen items-center">
+      <div class="py-10 px-5">
+        <h1 class="font-poppins text-xl font-semibold">
+          Welcome, <span class="text-logo_blue">Name</span>
+        </h1>
+        <h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit</h3>
+        <p>Momentan nu aveti pacienti invitati</p>
+        <button
+          id="invitation"
+          class="text-md mt-10 rounded-md bg-logo_blue px-4 py-2 text-white transition-colors duration-300 hover:bg-logo_d_blue lg:text-xl"
+        >
+          Invita Pacienti
+        </button>
+      </div>
+      <!-- <div><img src="../../assets/icons/Medicel.png" alt=""></div> -->
+    </main>
+    <article
+      class="PacientInvite absolute top-1/2 left-1/2 z-30 h-[260px] w-5/6 max-w-xs -translate-x-1/2 -translate-y-1/2 scale-0 flex-col items-center rounded-xl bg-logo_d_blue text-white sm:max-w-sm xl:max-w-lg"
+    >
+      <div class="mt-5 text-center text-lg">Invita un pacient</div>
+      <form action="" class="invite-form mt-6 ml-5">
+        <div class="my-4 flex flex-col">
+          <label for="">Numarul pacientului</label>
+          <input
+            type="text"
+            class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-10 text-opacity-70 sm:max-w-xs"
           />
         </div>
-        <ul
-          id="menu"
-          class="absolute right-4 flex scale-0 flex-col gap-3 rounded-md bg-logo_d_blue bg-opacity-90 p-3 text-white shadow-xl"
-        >
-          <li class="duration-300 hover:text-somon">
-            <a href="#">Pacienti</a>
-          </li>
-          <li class="duration-300 hover:text-somon"><a href="#">Program</a></li>
-          <li class="duration-300 hover:text-somon">
-            <a href="#">Nume Prenume</a>
-          </li>
-        </ul>
-      </div>
-    </nav>  -->
+        <div class="mb-4 flex flex-col">
+          <label for="">Emailul pacientului</label>
+          <input
+            type="text"
+            class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-10 text-opacity-70 sm:max-w-xs"
+          />
+        </div>
+        <input
+          class="w-[80px] cursor-pointer rounded-lg bg-somon px-3 py-1 text-lg shadow-2xl transition-colors duration-300 hover:bg-amber-800"
+          type="submit"
+          value="Invita"
+          id="finalInvite"
+        />
+      </form>
+    </article>
+    <div
+      class="invite-wrapper pointer-events-none fixed inset-0 z-20 bg-black opacity-0"
+    ></div>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed veritatis
+      labore ab repudiandae nostrum odio laudantium quia dicta eaque maxime
+      molestias reprehenderit nobis aliquam, accusamus tempore perspiciatis
+      vitae voluptatem quaerat quae nemo. Architecto illum perferendis non nobis
+      doloribus dignissimos porro neque est dolorum sunt quod consequatur at
+      expedita in asperiores eligendi excepturi, suscipit praesentium illo vero
+      quisquam assumenda reprehenderit? Pariatur commodi quos enim modi,
+      exercitationem dolore, architecto rerum facilis qui dolores similique?
+      Minima necessitatibus fugiat sit labore veniam ullam sequi, ratione
+      quibusdam tempore? Impedit beatae, corrupti sequi repellendus ipsam quo
+      vitae, dolor, totam tempora aspernatur omnis dicta iure voluptatum ut.
+      Esse dolores, quis quasi debitis hic odio libero quo accusamus aperiam non
+      incidunt eum cum eligendi eos laudantium aut, voluptates accusantium
+      mollitia, adipisci animi! Eum reprehenderit odit deleniti vitae id,
+      molestias accusamus quibusdam beatae dolor itaque velit perspiciatis
+      facilis dolorum asperiores provident nobis assumenda expedita. Unde quam,
+      blanditiis facilis cupiditate suscipit omnis quasi nostrum quae
+      repellendus odit quod quisquam iste saepe, dicta eligendi explicabo eius
+      repudiandae odio sed voluptas. Veritatis, recusandae exercitationem
+      mollitia quod laboriosam commodi et. Explicabo vel est facilis nisi
+      veritatis officia quod harum. Recusandae sapiente odit molestias, et nobis
+      eveniet inventore dolorum quisquam eaque voluptate, nostrum eos iure
+      impedit voluptatum. Dicta quibusdam molestias laborum error omnis enim ad
+      provident, esse, nisi distinctio nobis suscipit nemo illum commodi cumque
+      iste sit fugit delectus? Dolorum quasi vitae officia cumque soluta quidem
+      molestiae inventore ex delectus. Praesentium incidunt rem officiis ut,
+      quod quos amet labore. Voluptatum accusamus illo error. Ipsa dolor
+      expedita quod aliquid a ipsam iste sit harum impedit doloremque voluptas
+      molestiae, maiores laboriosam eligendi. Eaque odio voluptas aliquid quia
+      ab possimus officia quaerat sunt. Quo distinctio ipsam, aut veniam enim
+      eaque delectus esse fuga debitis nostrum impedit, sequi facilis sed
+      consectetur voluptatibus officiis incidunt dolorum alias temporibus iste
+      neque nam reiciendis. Officia dolorem reprehenderit recusandae illum odit
+      soluta amet cupiditate tenetur. Sed iusto consequatur ipsa, iure tenetur
+      facere aliquam nam asperiores consequuntur distinctio blanditiis eos non
+      deserunt ex praesentium eligendi reiciendis vel qui magnam rem. A
+      pariatur, excepturi nihil vel ipsam esse ipsa est eligendi veniam harum
+      nemo modi neque iure asperiores fugiat deleniti voluptates? Eaque,
+      accusantium temporibus itaque aliquam illo alias accusamus molestiae,
+      obcaecati incidunt veniam dolore. Dolorem, repellat. Dolorem incidunt
+      voluptatibus debitis, provident nihil accusamus voluptatem dolore
+      laboriosam maxime adipisci, voluptatum iste. Possimus ea, voluptate atque
+      ad repellat nesciunt sunt! Repudiandae, odit assumenda. Consectetur,
+      blanditiis consequatur dolorum laboriosam quo beatae et atque rerum.
+      Nostrum modi aspernatur dolores adipisci in delectus id, numquam fuga
+      cumque? Quidem id illo natus nesciunt odit veniam labore minima molestias
+      laudantium sit repellendus obcaecati possimus, animi nisi fugit laboriosam
+      maxime dolores placeat voluptates culpa repudiandae numquam fugiat! Illum
+      cupiditate eveniet qui veritatis est cumque voluptate nesciunt labore
+      perferendis et eaque voluptatum aliquid at, repellendus aliquam? Sequi,
+      dolorem perspiciatis optio quisquam quos sapiente repellat dolor. Repellat
+      quo illo aspernatur aliquid. Ullam ea quia reprehenderit quam, minima
+      saepe sapiente inventore eveniet nostrum dolor, magnam iste totam autem
+      dolorem quisquam vero nam adipisci tenetur sed.
+    </p>
+    <!-- wrapper -->
     <div
       class="wrapper pointer-events-none fixed inset-0 z-20 bg-black opacity-0"
     ></div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+      (function() {
+          // https://dashboard.emailjs.com/admin/account
+          emailjs.init('eDZv1Feg6iEr-LyFk');
+      })();
+  </script>
   </body>
 </html>
