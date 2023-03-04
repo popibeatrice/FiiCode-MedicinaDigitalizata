@@ -149,7 +149,7 @@ submit.addEventListener("click", (e) => {
             uploadString(ImageRef_med, imgMed as string, "data_url");
 
             // backend info push
-            
+
             setDoc(doc(db, "medici", UID), {
               nume,
               prenume,
@@ -160,20 +160,17 @@ submit.addEventListener("click", (e) => {
               loc,
             }).then(() => {
               location.href = "./med_main.html";
-            })
+            });
 
             // user uploads
-            
+
             signupForm.reset();
             ///location.href = "./med_main.html";
           };
-          
-        };///";
-      }
-       else alert("emailul nu e confirmat");
+        }; ///";
+      } else alert("emailul nu e confirmat");
     })
     .catch((err) => {
       console.log(err);
     });
-    
 });
