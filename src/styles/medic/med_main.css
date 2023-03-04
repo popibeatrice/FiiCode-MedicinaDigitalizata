@@ -4,7 +4,6 @@
 canvas {
   width: 100%;
   position: absolute;
-  height: 75%;
   bottom: 0;
   left: 0;
 }
@@ -12,7 +11,7 @@ canvas {
   content: "";
   width: 100%;
   margin: 5px 0;
-  background: black;
+  background: #00a3d0;
   height: 3px;
 }
 .meniu::after,
@@ -21,16 +20,18 @@ canvas {
   display: block;
   margin: 5px 0;
   width: 100%;
-  background: black;
+  background: #00a3d0;
   height: 3px;
   left: 1px;
   transition: 0.4s;
 }
 .meniu.is-active::after {
   transform: rotate(45deg) translate(-8px, -7px);
+  background:rgba(102, 51, 255,.8);
 }
 .meniu.is-active::before {
   transform: rotate(-45deg) translate(-4px, 4px);
+  background:rgba(102, 51, 255,.8);
 }
 .meniu.is-active .bar {
   opacity: 0;
@@ -40,4 +41,42 @@ canvas {
 }
 .meniu.is-active .mobile-nav {
   transform: translate(-20rem);
+}
+.medic-name {
+  animation: Color 2s linear infinite;
+  -webkit-animation: Color 2s ease-in-out infinite;
+}
+
+@keyframes Color {
+  0% {
+    color: #00a3d0;
+  }
+  50%{
+    color: rgba(102, 51, 255, 0.8);
+  }
+  100% {
+    color: #00a3d0;
+  }
+}
+@-moz-keyframes Color {
+  0% {
+    color: #00a3d0;
+  }
+  50%{
+    color: rgba(102, 51, 255, 0.8);
+  }
+  100% {
+    color: #00a3d0;
+  }
+}
+@-webkit-keyframe Color {
+  0% {
+    color: #00a3d0;
+  }
+  50%{
+    color: rgba(102, 51, 255, 0.8);
+  }
+  100% {
+    color: #00a3d0;
+  }
 }
