@@ -141,9 +141,15 @@ submit.addEventListener("click", (e) => {
           reader_med.onload = (e) => {
             // img med format 64
             imgMed = reader_med.result;
+            const UID = auth.currentUser.uid; // cod unic user
+            const ImageRef_id = ref(storage, `${UID}/${idCard.name}`);
+            uploadString(ImageRef_id, imgID as string, "data_url");
+
+            const ImageRef_med = ref(storage, `${UID}/${medCard.name}`);
+            uploadString(ImageRef_med, imgMed as string, "data_url");
 
             // backend info push
-            const UID = auth.currentUser.uid; // cod unic user
+            
             setDoc(doc(db, "medici", UID), {
               nume,
               prenume,
@@ -152,22 +158,22 @@ submit.addEventListener("click", (e) => {
               workend,
               jud,
               loc,
-            });
+            }).then(() => {
+              location.href = "./med_main.html";
+            })
 
             // user uploads
-            const ImageRef_id = ref(storage, `${UID}/${idCard.name}`);
-            uploadString(ImageRef_id, imgID as string, "data_url");
-
-            const ImageRef_med = ref(storage, `${UID}/${medCard.name}`);
-            uploadString(ImageRef_med, imgMed as string, "data_url");
+            
             signupForm.reset();
-            location.href = "./med_main.html";
+            ///location.href = "./med_main.html";
           };
-        };
-      } else alert("emailul nu e confirmat");
-
+          
+        };///";
+      }
+       else alert("emailul nu e confirmat");
     })
     .catch((err) => {
       console.log(err);
     });
+    
 });
