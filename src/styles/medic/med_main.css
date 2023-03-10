@@ -7,6 +7,13 @@ canvas {
   bottom: 0;
   left: 0;
 }
+.culoare{
+  background:red;
+}
+.marime{
+  height:3rem;
+  width:3rem;
+}
 .bar {
   content: "";
   width: 100%;

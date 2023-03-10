@@ -1,5 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth, db } from "./firebase";
+import { DocumentData, getDoc, doc } from "firebase/firestore";
+import { Snapshot } from "copy-webpack-plugin/types";
 //declarari
 const joinBtn = document.querySelector("#join") as HTMLElement;
 const joincloseBtn = document.querySelector("#joinclose") as HTMLElement;
@@ -9,10 +11,18 @@ const login_popup = document.querySelector(".login-popup") as HTMLElement;
 const login_button = document.querySelector("#login") as HTMLElement;
 const wrap = document.querySelector(".wrap") as HTMLElement;
 const close_login = document.querySelector(".close-login") as HTMLElement;
-const LastLogin = document.querySelector("#LastLogin") as HTMLFormElement;
+const Login = document.querySelector("#Login") as HTMLFormElement;
+
+async function getDuery(MedRef: any) {
+  const docSnap = await getDoc(MedRef);
+  if (docSnap.exists()) {
+    location.href = "./med_main.html";
+  } else {
+    location.href = "./patient_main.html";
+  }
+}
 
 //events
-
 // Pop up
 joinBtn.addEventListener("click", (e) => {
   joinPopup.classList.remove("scale-0");
@@ -56,11 +66,17 @@ close_login.addEventListener("click", (e) => {
 });
 
 //Log in form
-LastLogin.addEventListener("submit", (e) => {
+Login.addEventListener("submit", (e) => {
   e.preventDefault();
-  const email = LastLogin.email.value;
-  const password = LastLogin.password.value;
+  const email = Login.email.value;
+  const password = Login.password.value;
   signInWithEmailAndPassword(auth, email, password)
-    .then((cred) => console.log("usser logged in"))
-    .catch(() => console.log("user is not logged"));
+    .then((cred) => {
+      const MedRef = doc(db, "medici", auth.currentUser.uid);
+      getDuery(MedRef);
+      Login.reset();
+    })
+    .catch(() => {
+      console.log("user is not logged");
+    });
 });
