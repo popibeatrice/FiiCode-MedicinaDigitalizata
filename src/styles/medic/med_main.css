@@ -8,11 +8,10 @@ canvas {
   left: 0;
 }
 .culoare{
-  background:red;
 }
 .marime{
-  height:3rem;
-  width:3rem;
+  height:4rem;
+  width:4rem;
 }
 .bar {
   content: "";

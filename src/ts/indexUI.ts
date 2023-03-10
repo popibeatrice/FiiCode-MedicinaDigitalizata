@@ -21,7 +21,6 @@ async function getDuery(MedRef: any) {
     location.href = "./patient_main.html";
   }
 }
-
 //events
 // Pop up
 joinBtn.addEventListener("click", (e) => {

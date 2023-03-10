@@ -1,7 +1,15 @@
 import "../../styles/medic/med_main.css";
 import "../../styles/index.css";
 import "./med_mainCanv";
-import { getDoc, doc, setDoc } from "firebase/firestore";
+import {
+  getDoc,
+  doc,
+  setDoc,
+  query,
+  collection,
+  where,
+  getDocs,
+} from "firebase/firestore";
 import { db, auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -17,7 +25,22 @@ async function Invitation(MedRef) {
   } else throw TypeError("nu esti docos");
 }
 
-onAuthStateChanged(auth, (user) => {
+const ListaPacienti = document.querySelector("#listaPacienti");
+async function PatientSearch(q) {
+  const querySnapshot = await getDocs(q);
+  if (querySnapshot.empty) throw TypeError("unde s pacientii doctore");
+  else
+    querySnapshot.forEach((doc) => {
+      const pacient = document.createElement("li");
+      const anchor = document.createElement(`a`);
+      pacient.appendChild(anchor);
+      const UID = doc.id;
+      anchor.href = `./med_patientpg.html?ID=${UID}`;
+      anchor.innerHTML = `${doc.data().nume} ${doc.data().prenume}`;
+      ListaPacienti.appendChild(pacient);
+    });
+}
+auth.onAuthStateChanged((user) => {
   if (!user) {
     location.href = "./index.html";
   } else {
@@ -28,6 +51,8 @@ onAuthStateChanged(auth, (user) => {
       NoAccess.classList.add("opacity-0");
       NoAccess.classList.add("pointer-events-none");
     });
+    const q = query(collection(db, "pacienti"), where("medic", "==", user.uid));
+    PatientSearch(q).then(() => {});
   }
 });
 
@@ -49,14 +74,20 @@ smecher.href = "./med_patientpg.html?ID=2ieRvzpSbLfYKqWtipemAes8oms1";
 // events
 window.addEventListener("scroll", (e) => {
   header.classList.toggle("culoare", window.scrollY > 0);
-  Logo.classList.toggle(
-    "xl:h-24",
-    "xl:w-24",
-    "h-20",
-    "w-20",
-    window.scrollY > 0
-  );
-  Logo.classList.toggle("marime", window.scrollY > 0);
+  // Logo.classList.toggle(
+  //   "xl:h-24",
+  //   "xl:w-24",
+  //   "h-20",
+  //   "w-20",
+  //   window.scrollY > 0
+  // );
+  if (window.scrollY > 0) {
+    Logo.classList.remove("xl:h-24", "xl:w-24", "h-20", "w-20");
+    Logo.classList.add("marime", "duration-300");
+  } else {
+    Logo.classList.remove("marime");
+    Logo.classList.add("xl:h-24", "xl:w-24", "h-20", "w-20", "duration-300");
+  }
 });
 
 menuBtn.addEventListener("click", (e) => {
