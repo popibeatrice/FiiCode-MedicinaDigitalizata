@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import {auth} from "./firebase";
+import { auth } from "./firebase";
 //declarari
 const joinBtn = document.querySelector("#join") as HTMLElement;
 const joincloseBtn = document.querySelector("#joinclose") as HTMLElement;
@@ -61,6 +61,6 @@ LastLogin.addEventListener("submit", (e) => {
   const email = LastLogin.email.value;
   const password = LastLogin.password.value;
   signInWithEmailAndPassword(auth, email, password)
-  .then((cred) => console.log("usser logged in"))
-  .catch(() => console.log("user is not logged"))
-})
+    .then((cred) => console.log("usser logged in"))
+    .catch(() => console.log("user is not logged"));
+});
