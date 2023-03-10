@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import {auth, db} from "./firebase";
+import { auth, db } from "./firebase";
 import { DocumentData, getDoc, doc } from "firebase/firestore";
 import { Snapshot } from "copy-webpack-plugin/types";
 //declarari
@@ -13,13 +13,11 @@ const wrap = document.querySelector(".wrap") as HTMLElement;
 const close_login = document.querySelector(".close-login") as HTMLElement;
 const Login = document.querySelector("#Login") as HTMLFormElement;
 
-async function getDuery(MedRef : any) {
+async function getDuery(MedRef: any) {
   const docSnap = await getDoc(MedRef);
-  if (docSnap.exists())
-  {
+  if (docSnap.exists()) {
     location.href = "./med_main.html";
-  }
-  else{
+  } else {
     location.href = "./patient_main.html";
   }
 }
@@ -73,12 +71,12 @@ Login.addEventListener("submit", (e) => {
   const email = Login.email.value;
   const password = Login.password.value;
   signInWithEmailAndPassword(auth, email, password)
-  .then((cred) => {
-    const MedRef = doc(db, "medici", auth.currentUser.uid);
-    getDuery(MedRef);
-    Login.reset();
-})
-  .catch(() => {
-    console.log("user is not logged");
-  })
-})
+    .then((cred) => {
+      const MedRef = doc(db, "medici", auth.currentUser.uid);
+      getDuery(MedRef);
+      Login.reset();
+    })
+    .catch(() => {
+      console.log("user is not logged");
+    });
+});
