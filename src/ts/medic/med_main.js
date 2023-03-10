@@ -4,6 +4,34 @@ import "./med_mainCanv";
 import { getDoc, doc, setDoc } from "firebase/firestore";
 import { db, auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import { async } from "@firebase/util";
+
+const MedicName = document.querySelector(".medic-name");
+const NoAccess = document.querySelector(".NoAccess");
+const Loading = document.querySelector(".Loading");
+
+async function Invitation(MedRef) {
+  const docSnap = await getDoc(MedRef);
+  if (docSnap.exists()) {
+    const Nume = docSnap.data().nume;
+    const Prenume = docSnap.data().prenume;
+    return `${Nume} ${Prenume}`;
+  } else throw TypeError("nu esti docos");
+}
+
+auth.onAuthStateChanged((user) => {
+  if (!user) {
+    location.href = "./index.html";
+  } else {
+    const MedRef = doc(db, "medici", user.uid);
+    Invitation(MedRef).then((cred) => {
+      MedicName.textContent = cred;
+      console.log(cred);
+      NoAccess.classList.add("opacity-0");
+      NoAccess.classList.add("pointer-events-none");
+    });
+  }
+});
 
 // veriables
 const menuBtn = document.querySelector(".meniu");
@@ -14,18 +42,23 @@ const inviteWrapper = document.querySelector(".invite-wrapper");
 const InviteForm = document.querySelector(".invite-form");
 const MeniuWrapper = document.querySelector(".meniu-wrapper");
 const CloseInvite = document.querySelector(".closeInvite-login");
-
+const body = document.querySelector("body");
+const header = document.querySelector("header");
+const Logo = document.querySelector("#Logo");
 // async
-async function Invitation(param) {
-  const docSnap = await getDoc(param);
-  if (docSnap.exists()) {
-    const Nume = docSnap.data().nume;
-    const Prenume = docSnap.data().prenume;
-    return `${Nume} ${Prenume}`;
-  } else throw TypeError("nu esti docos");
-}
-
 // events
+window.addEventListener("scroll", (e) => {
+  header.classList.toggle("culoare", window.scrollY > 0);
+  Logo.classList.toggle(
+    "xl:h-24",
+    "xl:w-24",
+    "h-20",
+    "w-20",
+    window.scrollY > 0
+  );
+  Logo.classList.toggle("marime", window.scrollY > 0);
+});
+
 menuBtn.addEventListener("click", (e) => {
   menuBtn.classList.toggle("is-active");
   if (menuBtn.classList.contains("is-active")) {
@@ -45,7 +78,7 @@ CloseInvite.addEventListener("click", (e) => {
   PacientInvitation.classList.add("scale-0");
   inviteWrapper.classList.remove("opacity-[65%]");
   inviteWrapper.classList.add("pointer-events-none");
-})
+});
 
 invitationBtn.addEventListener("click", (e) => {
   PacientInvitation.classList.remove("scale-0");

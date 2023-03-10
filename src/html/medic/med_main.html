@@ -99,7 +99,7 @@
     <title>med main</title>
   </head>
   <body class="-z-10 overflow-x-hidden">
-    <header class="font-poppins">
+    <header class="sticky top-0 z-40 font-poppins">
       <div class="dropdown flex flex-row items-center justify-between">
         <a
           href="./med_main.html"
@@ -109,9 +109,9 @@
             src="../../assets/icons/logo.png"
             class="pointer-events-none h-20 w-20 xl:h-24 xl:w-24"
             alt="Logo MenUmed"
+            id="Logo"
           />
         </a>
-        <!-- nav -->
         <nav class="mx-10 hidden text-white xs:block md:text-lg">
           <ul class="flex text-logo_blue">
             <li class="cursor-pointer duration-300 hover:text-moviu">
@@ -152,20 +152,21 @@
           </button>
         </div>
       </div>
-      <!-- logo -->
     </header>
     <div
       class="meniu-wrapper pointer-events-none fixed inset-0 z-20 bg-black opacity-0"
     ></div>
 
-    <main class="custom_h items-star relative flex w-full">
+    <main class="items-star relative flex h-screen w-full">
       <canvas class="h-[50%]"></canvas>
       <div class="mt-10 py-10 px-5 xs:ml-6 sm:ml-14 md:ml-40">
-        <h1 class="font-poppins text-3xl font-semibold sm:text-4xl md:text-5xl">
+        <h1
+          class="font-poppins text-3xl font-semibold sm:text-4xl md:text-5xl 3xl:text-7xl"
+        >
           Welcome,<br />
-          <span class="medic-name text-logo_blue">Name</span>
+          <span class="medic-name text-logo_blue"></span>
         </h1>
-        <h3 class="mt-3">
+        <h3 class="mt-3 3xl:text-lg">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit
         </h3>
         <p>Momentan nu aveti pacienti invitati</p>
@@ -176,7 +177,6 @@
           Invita Pacienti
         </button>
       </div>
-      <!-- <div><img src="../../assets/icons/Medicel.png" alt=""></div> -->
 
       <article
         class="PacientInvite fixed top-1/2 left-1/2 z-30 h-[260px] w-5/6 max-w-xs -translate-x-1/2 -translate-y-1/2 scale-0 flex-col items-center rounded-xl bg-logo_d_blue bg-opacity-80 text-white sm:max-w-sm xl:max-w-lg"
@@ -278,6 +278,7 @@
     <div
       class="wrapper pointer-events-none fixed inset-0 z-20 bg-black opacity-0"
     ></div>
+    <div class="NoAccess fixed inset-0 z-20 bg-white"></div>
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
