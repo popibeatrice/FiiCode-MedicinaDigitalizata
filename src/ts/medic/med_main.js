@@ -4,11 +4,9 @@ import "./med_mainCanv";
 import { getDoc, doc, setDoc } from "firebase/firestore";
 import { db, auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { async } from "@firebase/util";
 
 const MedicName = document.querySelector(".medic-name");
 const NoAccess = document.querySelector(".NoAccess");
-const Loading = document.querySelector(".Loading");
 
 async function Invitation(MedRef) {
   const docSnap = await getDoc(MedRef);
@@ -19,7 +17,7 @@ async function Invitation(MedRef) {
   } else throw TypeError("nu esti docos");
 }
 
-auth.onAuthStateChanged((user) => {
+onAuthStateChanged(auth, (user) => {
   if (!user) {
     location.href = "./index.html";
   } else {
@@ -36,15 +34,17 @@ auth.onAuthStateChanged((user) => {
 // veriables
 const menuBtn = document.querySelector(".meniu");
 const invitationBtn = document.querySelector("#invitation");
-const finalInvite = document.querySelector("#finalInvite");
 const PacientInvitation = document.querySelector(".PacientInvite");
 const inviteWrapper = document.querySelector(".invite-wrapper");
 const InviteForm = document.querySelector(".invite-form");
 const MeniuWrapper = document.querySelector(".meniu-wrapper");
 const CloseInvite = document.querySelector(".closeInvite-login");
-const body = document.querySelector("body");
 const header = document.querySelector("header");
 const Logo = document.querySelector("#Logo");
+const smecher = document.querySelector("#smecher");
+
+smecher.href = "./med_patientpg.html?ID=2ieRvzpSbLfYKqWtipemAes8oms1";
+
 // async
 // events
 window.addEventListener("scroll", (e) => {

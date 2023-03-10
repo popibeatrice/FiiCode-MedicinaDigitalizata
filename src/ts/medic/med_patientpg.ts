@@ -1,13 +1,46 @@
 import "../../styles/medic/med_patientpg.css";
 import "../../styles/index.css";
-import { auth, storage } from "../firebase";
+import { auth, storage, db } from "../firebase";
 import { ref, uploadString, listAll, getDownloadURL } from "firebase/storage";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 
 // NAVBAR BURGUR DROPDOWN
 
 // variabile
 const menuBtn = document.querySelector(".meniu");
 const MeniuWrapper = document.querySelector(".meniu-wrapper");
+const numePacient = document.querySelector("#nume_pacient") as HTMLElement;
+const varstaPacient = document.querySelector("#varsta_pacient") as HTMLElement;
+const judPacient = document.querySelector("#jud_pacient") as HTMLElement;
+const locPacient = document.querySelector("#loc_pacient") as HTMLElement;
+const stradaPacient = document.querySelector("#strada_pacient") as HTMLElement;
+const noAccess = document.querySelector("#no_access");
+const urlParams = new URLSearchParams(window.location.search);
+const UID = urlParams.get("ID");
+
+// verificam daca e conectat
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    location.href = "./index.html";
+  } else {
+    const pacientRef = doc(db, "pacienti", UID);
+    getDoc(pacientRef).then((cred) => {
+      const numeComplet = `${cred.data().nume} ${cred.data().prenume}`;
+      const strada = `${cred.data().strada}`;
+      const loc = `${cred.data().loc}`;
+      const jud = `${cred.data().jud}`;
+      const varsta = `${cred.data().varsta}`;
+      numePacient.innerText = numeComplet;
+      varstaPacient.innerHTML += " " + varsta;
+      locPacient.innerHTML += " " + loc;
+      judPacient.innerHTML += " " + jud;
+      stradaPacient.innerHTML += " " + strada;
+      noAccess.classList.add("opacity-0");
+      noAccess.classList.add("pointer-events-none");
+    });
+  }
+});
 
 // transformare burgur
 menuBtn.addEventListener("click", (e) => {
