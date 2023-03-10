@@ -164,13 +164,11 @@
         class="flex flex-col items-center gap-14 bg-white py-2 px-3 xs:flex-row xs:items-start xs:justify-start xs:gap-5"
       >
         <img
-          class="order-2 h-64 w-64 xs:order-1 xs:block xs:h-72 xs:w-72 md:h-96 md:w-96 lg:h-auto lg:w-auto"
+          class="h-64 w-64 xs:block xs:h-72 xs:w-72 md:h-96 md:w-96 lg:h-auto lg:w-auto"
           src="../../assets/stickers/doctor_chair.png"
           alt=""
         />
-        <div
-          class="order-1 flex flex-col items-start justify-start gap-5 text-left"
-        >
+        <div class="flex flex-col items-start justify-start gap-5 text-left">
           <h1
             class="font-poppins text-3xl font-semibold text-logo_blue xs:w-min sm:text-5xl md:text-6xl lg:text-8xl"
           >
@@ -197,33 +195,47 @@
             <span class="text-logo_blue">Strada:</span> Izvoarelor</span
           >
           <div
-            class="flex flex-col items-stretch justify-start gap-3 md:flex-row lg:gap-8"
+            class="flex flex-col items-start justify-start gap-3 md:flex-row lg:gap-8"
           >
+            <div class="flex flex-col gap-3">
+              <button
+                class="w-40 rounded-md bg-logo_blue py-2 px-4 font-poppins text-white transition-colors duration-300 hover:bg-moviu md:text-xl"
+                id="PDFupload_btn"
+              >
+                Alege Fisa Medicala
+              </button>
+              <form
+                class="hidden"
+                action=""
+                method="post"
+                enctype="multipart/form-data"
+                id="PDF_form"
+              >
+                <input
+                  type="file"
+                  name=""
+                  id="PDF_input"
+                  accept="application/pdf"
+                />
+              </form>
+              <button
+                id="PDFsend_btn"
+                class="w-40 rounded-md bg-logo_blue py-2 font-poppins text-white transition-colors duration-300 hover:bg-moviu md:text-xl"
+              >
+                Incarca Fisa Medicala
+              </button>
+            </div>
             <button
-              class="w-40 rounded-md bg-logo_blue py-2 font-poppins text-white transition-colors duration-300 hover:bg-moviu lg:text-xl"
-              id="posteaza"
-            >
-              Fisa Medicala
-            </button>
-            <form
-              class="hidden"
-              action=""
-              method="post"
-              enctype="multipart/form-data"
-            >
-              <input type="file" name="" id="fisa" accept="application/pdf" />
-            </form>
-            <button
-              class="w-40 rounded-md bg-logo_blue py-2 font-poppins text-white transition-colors duration-300 hover:bg-moviu lg:text-xl"
+              class="w-40 rounded-md bg-logo_blue py-2 px-4 font-poppins text-white transition-colors duration-300 hover:bg-moviu md:text-xl"
               id="trimite"
             >
-              Transfera Pacient
+              Transfera Pacientul
             </button>
           </div>
         </div>
       </div>
     </div>
-    <div class="mb-10 flex items-start justify-center">
+    <div class="mb-10 mt-10 flex items-start justify-center">
       <div
         class="relative flex w-[250px] flex-col gap-10 overflow-x-hidden xxs:w-[325px] xs:w-[450px] md:w-[625px] lg:w-[850px]"
       >

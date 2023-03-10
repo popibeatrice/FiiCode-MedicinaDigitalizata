@@ -3,9 +3,13 @@ import "../../styles/index.css";
 import { auth, storage } from "../firebase";
 import { ref, uploadString, listAll, getDownloadURL } from "firebase/storage";
 
-// nav burgur dropdown
+// NAVBAR BURGUR DROPDOWN
+
+// variabile
 const menuBtn = document.querySelector(".meniu");
 const MeniuWrapper = document.querySelector(".meniu-wrapper");
+
+// transformare burgur
 menuBtn.addEventListener("click", (e) => {
   menuBtn.classList.toggle("is-active");
   if (menuBtn.classList.contains("is-active")) {
@@ -22,7 +26,9 @@ MeniuWrapper.addEventListener("click", (e) => {
   MeniuWrapper.classList.add("pointer-events-none");
 });
 
-// carusel
+// CARUSEL DE FISE MEDICALE
+
+//variabile
 const container = document.querySelector(".scrolol");
 const slide = document.querySelector(".slide");
 const spate = document.querySelector("#spate");
@@ -37,42 +43,70 @@ spate.addEventListener("click", () => {
   container.scrollLeft -= slideWidth;
 });
 
-// buton invizibil
-const butonasMagic = document.querySelector("#posteaza");
-const postBtn = document.querySelector("#trimite");
+// ALEGERE SI INCARCARE PDF
+
+// variabile
+const PDFuploadBtn = document.querySelector("#PDFupload_btn");
+const PDFsendBtn = document.querySelector("#PDFsend_btn");
+
+// functie care da trigger la inputul ala urat
 function openFile() {
-  const fisa = document.querySelector("#fisa") as HTMLFormElement;
-  fisa.click();
+  const PDFinput = document.querySelector("#PDF_input") as HTMLFormElement;
+  PDFinput.click();
 }
-butonasMagic.addEventListener("click", () => {
+PDFuploadBtn.addEventListener("click", () => {
   openFile();
 });
-postBtn.addEventListener("click", () => {
-  const form = document.querySelector("form");
-  const fisaPDF = form.fisa.files[0];
-  let imgID: string | ArrayBuffer;
+PDFsendBtn.addEventListener("click", () => {
+  const PDFform = document.querySelector("#PDF_form") as HTMLFormElement;
+  const PDF = PDFform.PDF_input.files[0];
+  if (PDF === undefined) {
+    alert("selectati PDF");
+    return;
+  }
+  let PDFstring: string | ArrayBuffer;
   let reader_id = new FileReader();
-  reader_id.readAsDataURL(fisaPDF);
+  reader_id.readAsDataURL(PDF);
   reader_id.onload = (e) => {
-    // img id format 64
-    imgID = reader_id.result;
-    const UID = auth.currentUser.uid; // cod unic user
-    const ImageRef_id = ref(storage, `caca/${fisaPDF.name}`);
-    uploadString(ImageRef_id, imgID as string, "data_url");
+    // transform pdf in base 64
+    PDFstring = reader_id.result;
+    const PDFrefID = ref(storage, `caca/istoricMed/${PDF.name}`);
+    uploadString(PDFrefID, PDFstring as string, "data_url")
+      .then(() => {
+        alert("pdf incarcat cu succes");
+        PDFform.reset();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 });
-const listRef = ref(storage, "caca");
+
+const listRef = ref(storage, "caca/istoricMed");
 listAll(listRef)
   .then((res) => {
     res.items.forEach((itemRef) => {
-      // All the items under listRef.
-      console.log(itemRef);
+      // toate pdfurile din istoric
       getDownloadURL(itemRef).then((url) => {
-        const li = document.querySelector("object") as HTMLObjectElement;
-        li.data = url;
+        const ul = document.querySelector(".scrolol");
+        const li = document.createElement("li");
+        const object = document.createElement("object");
+        li.classList.add("slide", "w-full");
+        object.classList.add(
+          "h-[850px]",
+          "w-[225px]",
+          "xxs:w-[300px]",
+          "xs:w-[450px]",
+          "md:w-[625px]",
+          "lg:w-[850px]"
+        );
+        object.type = "application/pdf";
+        object.data = url;
+        li.appendChild(object);
+        ul.appendChild(li);
       });
     });
   })
-  .catch((error) => {
-    // Uh-oh, an error occurred!
+  .catch((err) => {
+    console.log(err);
   });
