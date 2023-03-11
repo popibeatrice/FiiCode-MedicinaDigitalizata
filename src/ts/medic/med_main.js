@@ -15,6 +15,7 @@ import { onAuthStateChanged } from "firebase/auth";
 
 const MedicName = document.querySelector(".medic-name");
 const NoAccess = document.querySelector(".NoAccess");
+const AccountName = document.querySelector(".account-name");
 
 async function Invitation(MedRef) {
   const docSnap = await getDoc(MedRef);
@@ -34,6 +35,22 @@ async function PatientSearch(q) {
       const pacient = document.createElement("li");
       const anchor = document.createElement("a");
       pacient.appendChild(anchor);
+      pacient.classList.add(
+        "border-logo_blue",
+        "w-[100%]",
+        "text-center",
+        "text-xl",
+        "lg:text-2xl",
+        "font-poppins",
+        "border-[3px]",
+        "my-4",
+        "lg:my-6",
+        "p-2",
+        "capitalize",
+        "hover:bg-logo_blue",
+        "hover:text-white",
+        "duration-300"
+      );
       const UID = doc.id;
       anchor.href = `./med_patientpg.html?ID=${UID}`;
       anchor.innerHTML = `${doc.data().nume} ${doc.data().prenume}`;
@@ -47,6 +64,7 @@ onAuthStateChanged(auth, (user) => {
     const MedRef = doc(db, "medici", user.uid);
     Invitation(MedRef).then((cred) => {
       MedicName.textContent = cred;
+      AccountName.textContent = cred;
       console.log(cred);
       NoAccess.classList.add("opacity-0");
       NoAccess.classList.add("pointer-events-none");
