@@ -99,9 +99,10 @@
     <title>pacient</title>
   </head>
   <body class="w-full overflow-x-hidden font-roboto">
-    <header class="font-poppins">
-      <div class="dropdown flex flex-row items-center justify-between">
+    <header class="sticky top-0 z-30 font-poppins">
+      <div class="flex flex-row items-center justify-between">
         <a
+          id="logo_link"
           href="./med_main.html"
           class="flex items-center justify-center gap-2"
         >
@@ -109,6 +110,7 @@
             src="../../assets/icons/logo.png"
             class="pointer-events-none h-20 w-20 xl:h-24 xl:w-24"
             alt="Logo MenUmed"
+            id="Logo"
           />
         </a>
         <!-- nav -->
@@ -138,12 +140,12 @@
                   <a class="" href="#">Account</a>
                 </li>
                 <li
-                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-90 py-2 px-2 text-left font-roboto text-moviu text-white duration-500 hover:bg-moviu hover:text-white"
+                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-90 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
                 >
                   <a class="" href="#">Program</a>
                 </li>
                 <li
-                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-90 py-2 px-2 text-left font-roboto text-moviu text-white duration-500 hover:bg-moviu hover:text-white"
+                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-90 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
                 >
                   <a class="">Pacienti</a>
                 </li>
@@ -152,7 +154,6 @@
           </button>
         </div>
       </div>
-      <!-- logo -->
     </header>
     <div
       class="meniu-wrapper pointer-events-none fixed inset-0 z-20 bg-black opacity-0"
@@ -278,6 +279,6 @@
         </ul>
       </div>
     </div>
-    <div class="fixed inset-0 z-20 bg-white" id="no_access"></div>
+    <div class="fixed inset-0 z-40 bg-white" id="no_access"></div>
   </body>
 </html>

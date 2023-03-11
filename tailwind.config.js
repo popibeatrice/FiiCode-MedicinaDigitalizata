@@ -10,14 +10,15 @@ module.exports = {
       lg: "1024px",
       xl: "1280px",
       "2xl": "1536px",
-      "3xl": "1700px"
+      "3xl": "1700px",
     },
     extend: {
       colors: {
         logo_blue: "#00a3d0",
         somon: "#ee6c4d",
         logo_d_blue: "#293241",
-        moviu: "rgba(102, 51, 255,.8)",
+        moviu_trans: "rgba(102, 51, 255,.8)",
+        moviu: "rgba(102, 51, 255)",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

@@ -98,10 +98,12 @@
     />
     <title>med main</title>
   </head>
-  <body class="-z-10 overflow-x-hidden">
-    <header class="sticky top-0 z-40 font-poppins">
-      <div class="dropdown flex flex-row items-center justify-between">
+  <body class="-z-20 overflow-x-hidden">
+    <div class="NoAccess fixed inset-0 z-50 bg-white"></div>
+    <header class="sticky top-0 z-20 font-poppins">
+      <div class="flex flex-row items-center justify-between">
         <a
+          id="logo_link"
           href="./med_main.html"
           class="flex items-center justify-center gap-2"
         >
@@ -133,17 +135,17 @@
             >
               <ul class="flex flex-col">
                 <li
-                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-90 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
+                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-95 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
                 >
                   <a class="" href="#">Account</a>
                 </li>
                 <li
-                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-90 py-2 px-2 text-left font-roboto text-moviu text-white duration-500 hover:bg-moviu hover:text-white"
+                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-95 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
                 >
                   <a class="" href="#">Program</a>
                 </li>
                 <li
-                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-90 py-2 px-2 text-left font-roboto text-moviu text-white duration-500 hover:bg-moviu hover:text-white"
+                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-95 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
                 >
                   <a class="">Pacienti</a>
                 </li>
@@ -154,11 +156,11 @@
       </div>
     </header>
     <div
-      class="meniu-wrapper pointer-events-none fixed inset-0 z-20 bg-black opacity-0"
+      class="meniu-wrapper pointer-events-none fixed inset-0 z-10 bg-black opacity-0"
     ></div>
 
     <main class="items-star custom_h relative flex w-full">
-      <canvas class="h-[50%]"></canvas>
+      <canvas class="-z-10 h-[50%]"></canvas>
       <div class="mt-10 py-10 px-5 xs:ml-6 sm:ml-14 md:ml-40">
         <h1
           class="font-poppins text-3xl font-semibold sm:text-4xl md:text-5xl 3xl:text-7xl"
@@ -179,7 +181,7 @@
       </div>
 
       <article
-        class="PacientInvite fixed top-1/2 left-1/2 z-30 h-[260px] w-5/6 max-w-xs -translate-x-1/2 -translate-y-1/2 scale-0 flex-col items-center rounded-xl bg-logo_d_blue bg-opacity-80 text-white sm:max-w-sm xl:max-w-lg"
+        class="PacientInvite fixed top-1/2 left-1/2 z-30 h-[260px] w-5/6 max-w-xs -translate-x-1/2 -translate-y-1/2 scale-0 flex-col items-center rounded-xl bg-logo_d_blue bg-opacity-90 text-white sm:max-w-sm xl:max-w-lg"
       >
         <div
           class="closeInvite-login absolute right-5 top-2 cursor-pointer self-end text-lg transition-all hover:scale-150 hover:text-logo_blue"
@@ -215,16 +217,7 @@
         </form>
       </article>
     </main>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt eligendi
-      a ratione dicta. Fuga similique rerum atque quo a architecto!Lorem ipsum
-      dolor sit amet consectetur adipisicing elit. Incidunt eligendi a ratione
-      dicta. Fuga similique rerum atque quo a architecto!Lorem ipsum dolor sit
-      amet consectetur adipisicing elit. Incidunt eligendi a ratione dicta. Fuga
-      similique rerum atque quo a architecto!Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Incidunt eligendi a ratione dicta. Fuga
-      similique rerum atque quo a architecto!
-    </p>
+
     <section>
       <ul id="listaPacienti"></ul>
     </section>
@@ -232,10 +225,19 @@
     <div
       class="invite-wrapper pointer-events-none fixed inset-0 z-20 bg-black opacity-0"
     ></div>
-    <div
-      class="wrapper pointer-events-none fixed inset-0 z-20 bg-black opacity-0"
-    ></div>
-    <div class="NoAccess fixed inset-0 z-20 bg-white"></div>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum, cumque.
+      Atque alias minima vitae ipsa iusto, optio, laborum magni hic doloremque
+      eligendi aspernatur fugiat exercitationem dolores excepturi voluptatem
+      officiis deleniti eius numquam autem similique facere error beatae?
+      Perferendis eos dignissimos earum dolor molestias officia natus delectus
+      blanditiis nihil? Quam soluta rerum voluptatum minima error quisquam sunt
+      ex temporibus velit eos labore excepturi voluptatem dolor maxime molestiae
+      illo repellat, aut deleniti? Eius porro alias reiciendis rerum officiis
+      at, odio tempora, repudiandae nam ullam obcaecati ratione repellendus sunt
+      facilis asperiores. Eum, quae. Nulla repellendus odio voluptate minima
+      veniam aut sapiente modi officia.
+    </p>
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"

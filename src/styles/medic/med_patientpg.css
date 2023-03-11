@@ -8,6 +8,10 @@
   background: #00a3d0;
   height: 3px;
 }
+.marime {
+  height: 4rem;
+  width: 4rem;
+}
 .meniu::after,
 .meniu::before {
   content: "";

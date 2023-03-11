@@ -1,17 +1,18 @@
 .custom_h {
   min-height: calc(100vh - 80px);
 }
+
 canvas {
   width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
 }
-.culoare{
+.culoare {
 }
-.marime{
-  height:4rem;
-  width:4rem;
+.marime {
+  height: 4rem;
+  width: 4rem;
 }
 .bar {
   content: "";

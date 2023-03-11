@@ -16,6 +16,9 @@ const judPacient = document.querySelector("#jud_pacient") as HTMLElement;
 const locPacient = document.querySelector("#loc_pacient") as HTMLElement;
 const stradaPacient = document.querySelector("#strada_pacient") as HTMLElement;
 const noAccess = document.querySelector("#no_access");
+const header = document.querySelector("header");
+const Logo = document.querySelector("#Logo");
+const logoLink = document.querySelector("#logo_link");
 const urlParams = new URLSearchParams(window.location.search);
 const UID = urlParams.get("ID");
 
@@ -44,7 +47,9 @@ onAuthStateChanged(auth, (user) => {
 
 // transformare burgur
 menuBtn.addEventListener("click", (e) => {
+  Logo.classList.remove("duration-300");
   menuBtn.classList.toggle("is-active");
+  logoLink.classList.toggle("invisible");
   if (menuBtn.classList.contains("is-active")) {
     MeniuWrapper.classList.add("opacity-[75%]");
     MeniuWrapper.classList.remove("pointer-events-none");
@@ -55,8 +60,20 @@ menuBtn.addEventListener("click", (e) => {
 });
 MeniuWrapper.addEventListener("click", (e) => {
   menuBtn.classList.remove("is-active");
+  logoLink.classList.remove("invisible");
   MeniuWrapper.classList.remove("opacity-[75%]");
   MeniuWrapper.classList.add("pointer-events-none");
+});
+
+window.addEventListener("scroll", (e) => {
+  header.classList.toggle("culoare", window.scrollY > 0);
+  if (window.scrollY > 0) {
+    Logo.classList.remove("xl:h-24", "xl:w-24", "h-20", "w-20");
+    Logo.classList.add("marime", "duration-300");
+  } else {
+    Logo.classList.remove("marime");
+    Logo.classList.add("xl:h-24", "xl:w-24", "h-20", "w-20", "duration-300");
+  }
 });
 
 // CARUSEL DE FISE MEDICALE

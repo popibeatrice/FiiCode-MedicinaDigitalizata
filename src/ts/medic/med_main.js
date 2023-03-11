@@ -32,7 +32,7 @@ async function PatientSearch(q) {
   else
     querySnapshot.forEach((doc) => {
       const pacient = document.createElement("li");
-      const anchor = document.createElement(`a`);
+      const anchor = document.createElement("a");
       pacient.appendChild(anchor);
       const UID = doc.id;
       anchor.href = `./med_patientpg.html?ID=${UID}`;
@@ -40,7 +40,7 @@ async function PatientSearch(q) {
       ListaPacienti.appendChild(pacient);
     });
 }
-auth.onAuthStateChanged((user) => {
+onAuthStateChanged(auth, (user) => {
   if (!user) {
     location.href = "./index.html";
   } else {
@@ -52,7 +52,7 @@ auth.onAuthStateChanged((user) => {
       NoAccess.classList.add("pointer-events-none");
     });
     const q = query(collection(db, "pacienti"), where("medic", "==", user.uid));
-    PatientSearch(q).then(() => {});
+    PatientSearch(q);
   }
 });
 
@@ -66,21 +66,12 @@ const MeniuWrapper = document.querySelector(".meniu-wrapper");
 const CloseInvite = document.querySelector(".closeInvite-login");
 const header = document.querySelector("header");
 const Logo = document.querySelector("#Logo");
-const smecher = document.querySelector("#smecher");
-
-smecher.href = "./med_patientpg.html?ID=2ieRvzpSbLfYKqWtipemAes8oms1";
+const logoLink = document.querySelector("#logo_link");
 
 // async
 // events
 window.addEventListener("scroll", (e) => {
   header.classList.toggle("culoare", window.scrollY > 0);
-  // Logo.classList.toggle(
-  //   "xl:h-24",
-  //   "xl:w-24",
-  //   "h-20",
-  //   "w-20",
-  //   window.scrollY > 0
-  // );
   if (window.scrollY > 0) {
     Logo.classList.remove("xl:h-24", "xl:w-24", "h-20", "w-20");
     Logo.classList.add("marime", "duration-300");
@@ -91,6 +82,8 @@ window.addEventListener("scroll", (e) => {
 });
 
 menuBtn.addEventListener("click", (e) => {
+  Logo.classList.remove("duration-300");
+  logoLink.classList.toggle("invisible");
   menuBtn.classList.toggle("is-active");
   if (menuBtn.classList.contains("is-active")) {
     MeniuWrapper.classList.add("opacity-[75%]");
@@ -103,22 +96,23 @@ menuBtn.addEventListener("click", (e) => {
 MeniuWrapper.addEventListener("click", (e) => {
   menuBtn.classList.remove("is-active");
   MeniuWrapper.classList.remove("opacity-[75%]");
+  logoLink.classList.remove("invisible");
   MeniuWrapper.classList.add("pointer-events-none");
 });
 CloseInvite.addEventListener("click", (e) => {
   PacientInvitation.classList.add("scale-0");
-  inviteWrapper.classList.remove("opacity-[65%]");
+  inviteWrapper.classList.remove("opacity-[75%]");
   inviteWrapper.classList.add("pointer-events-none");
 });
 
 invitationBtn.addEventListener("click", (e) => {
   PacientInvitation.classList.remove("scale-0");
-  inviteWrapper.classList.add("opacity-[65%]");
+  inviteWrapper.classList.add("opacity-[75%]");
   inviteWrapper.classList.remove("pointer-events-none");
 });
 inviteWrapper.addEventListener("click", (e) => {
   PacientInvitation.classList.add("scale-0");
-  inviteWrapper.classList.remove("opacity-[65%]");
+  inviteWrapper.classList.remove("opacity-[75%]");
   inviteWrapper.classList.add("pointer-events-none");
 });
 InviteForm.addEventListener("submit", (e) => {
