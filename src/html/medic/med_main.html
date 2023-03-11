@@ -122,7 +122,9 @@
             <li class="cursor-pointer duration-300 hover:text-moviu">
               <a class="mx-3" href="#">Pacienti</a>
             </li>
-            <li class="cursor-pointer duration-300 hover:text-moviu">
+            <li
+              class="account-name cursor-pointer duration-300 hover:text-moviu"
+            >
               <a class="ml-3" href="#">Nume Prenume</a>
             </li>
           </ul>
@@ -181,7 +183,7 @@
       </div>
 
       <article
-        class="PacientInvite fixed top-1/2 left-1/2 z-30 h-[260px] w-5/6 max-w-xs -translate-x-1/2 -translate-y-1/2 scale-0 flex-col items-center rounded-xl bg-logo_d_blue bg-opacity-90 text-white sm:max-w-sm xl:max-w-lg"
+        class="PacientInvite fixed top-1/2 left-1/2 z-30 h-[300px] w-5/6 max-w-xs -translate-x-1/2 -translate-y-1/2 scale-0 flex-col items-center rounded-xl bg-logo_d_blue bg-opacity-90 text-white sm:max-w-sm xl:max-w-lg"
       >
         <div
           class="closeInvite-login absolute right-5 top-2 cursor-pointer self-end text-lg transition-all hover:scale-150 hover:text-logo_blue"
@@ -192,22 +194,44 @@
           Invita un pacient
         </div>
         <form action="" class="invite-form mt-3 flex flex-col items-center">
-          <div class="my-4 flex flex-col">
+          <div class="my-4 flex flex-col gap-4">
             <label for="">Numarul pacientului</label>
-            <input
+            <div class = "relative">
+              <div
+                class="absolute top-[-5px] left-[-5px] z-10 flex h-8 w-8 items-center justify-center rounded-3xl bg-white sm:top-[-8px] sm:left-[-8px] sm:h-10 sm:w-10"
+              >
+                <img
+                  class="pointer-events-none h-4 w-4 sm:h-6 sm:w-6"
+                  src="../../assets/icons/telephone.png"
+                  alt=""
+                />
+              </div>
+              <input
               type="text"
               id="phone"
-              class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-2 text-opacity-70 sm:max-w-xs"
+              class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-11 text-opacity-70 sm:max-w-xs"
             />
+            </div>
           </div>
-          <div class="mb-4 flex flex-col">
+          <div class="mb-4 flex flex-col gap-4">
             <label for="">Emailul pacientului</label>
+            <div class = "relative">
+              <div
+                class="absolute top-[-5px] right-[-5px] z-10 flex h-8 w-8 items-center justify-center rounded-3xl bg-white sm:top-[-8px] sm:right-[-8px] sm:h-10 sm:w-10"
+              >
+                <img
+                  class="pointer-events-none h-4 w-4 sm:h-6 sm:w-6"
+                  src="../../assets/icons/user.png"
+                  alt=""
+                />
+              </div>
             <input
               type="text"
               id="email"
-              class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pl-2 text-opacity-70 sm:max-w-xs"
+              class="w-[60vw] max-w-[15rem] rounded bg-slate-300 bg-opacity-30 px-3 pr-10 text-opacity-70 sm:max-w-xs"
             />
           </div>
+        </div>
           <input
             class="mr-5 w-[80px] cursor-pointer self-end rounded-lg bg-logo_blue px-3 py-1 text-lg shadow-2xl transition-colors duration-300 hover:bg-moviu"
             type="submit"
@@ -218,8 +242,13 @@
       </article>
     </main>
 
-    <section>
-      <ul id="listaPacienti"></ul>
+    <section class="mr-auto ml-auto mt-10 flex w-[70%] flex-col md:mt-20">
+      <h2
+        class="self-center font-poppins text-3xl font-semibold text-logo_blue xs:text-4xl sm:text-5xl 3xl:text-6xl"
+      >
+        Pacienti
+      </h2>
+      <ul class="w-full" id="listaPacienti"></ul>
     </section>
     <!-- wrapper -->
     <div
