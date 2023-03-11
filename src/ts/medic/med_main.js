@@ -128,6 +128,9 @@ InviteForm.addEventListener("submit", (e) => {
         alert("invitation mail was send to you pacient");
       });
       const UID = auth.currentUser.uid;
+      let phone = InviteForm.phone.value;
+      if (phone[0] != "+") phone = "+4" + phone;
+      console.log(phone);
       setDoc(doc(db, "invited_users", InviteForm.phone.value), {
         medic: UID,
       });
