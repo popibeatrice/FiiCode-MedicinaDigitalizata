@@ -3,7 +3,15 @@ import "../../styles/index.css";
 import { auth, storage, db } from "../firebase";
 import { ref, uploadString, listAll, getDownloadURL } from "firebase/storage";
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  collection,
+  where,
+} from "firebase/firestore";
+import { async } from "@firebase/util";
 
 // NAVBAR BURGUR DROPDOWN
 
@@ -21,7 +29,39 @@ const Logo = document.querySelector("#Logo");
 const logoLink = document.querySelector("#logo_link");
 const urlParams = new URLSearchParams(window.location.search);
 const UID = urlParams.get("ID");
+const MediciList = document.querySelector("#medici");
+const Search = document.querySelector("#searchMed");
 
+const FilterTodos = (term : any) => {
+  Array.from(MediciList.children)
+    .filter((todo) => !todo.textContent.includes(term))
+    .forEach((todo) => {
+      todo.classList.add("filtered");
+    });
+    Array.from(MediciList.children).filter(todo => todo.textContent.includes(term))
+    .forEach(todo => {
+      todo.classList.remove("filtered");
+    });
+};
+
+async function Doctors(Meds: any) {
+  const querySnapshot = await getDocs(Meds);
+  if (querySnapshot.empty) MediciList.textContent = "Nu sunt medici disponibili in zona";
+  else {
+    querySnapshot.forEach((doc: any) => {
+      const Medic = document.createElement("li");
+      ///Medic.textContent = ` ${doc.data().nume} ${doc.data().nume}`;
+      Medic.textContent = ` ${doc.data().nume} ${doc.data().prenume}`;
+      Medic.classList.add("w-full", "text-white", "my-4", "p-2", "capitalize", "bg-gray-600", "rounded-sm");
+      MediciList.appendChild(Medic);
+      Search.addEventListener("keyup", (e) => {
+        const event = e.target as any;
+        const term = event.value.trim();
+        FilterTodos(term);
+      });
+    });
+  }
+}
 // verificam daca e conectat
 onAuthStateChanged(auth, (user) => {
   if (!user) {
@@ -39,6 +79,11 @@ onAuthStateChanged(auth, (user) => {
       locPacient.innerHTML += " " + loc;
       judPacient.innerHTML += " " + jud;
       stradaPacient.innerHTML += " " + strada;
+      const Meds = query(
+        collection(db, "medici"),
+        where("jud", "==", cred.data().jud)
+      );
+      Doctors(Meds);
       noAccess.classList.add("opacity-0");
       noAccess.classList.add("pointer-events-none");
     });
@@ -74,6 +119,27 @@ window.addEventListener("scroll", (e) => {
     Logo.classList.remove("marime");
     Logo.classList.add("xl:h-24", "xl:w-24", "h-20", "w-20", "duration-300");
   }
+});
+//trimite pacient
+const TrimitePacient = document.querySelector("#trimite");
+const MedicPOP = document.querySelector("#medicPop");
+const MedicPopWrap = document.querySelector("#MedicPopWrap");
+const ClosePop = document.querySelector(".closeMed");
+
+TrimitePacient.addEventListener("click", (e) => {
+  MedicPOP.classList.remove("scale-0");
+  MedicPopWrap.classList.add("opacity-[75%]");
+  MedicPopWrap.classList.remove("pointer-events-none");
+});
+MedicPopWrap.addEventListener("click", (e) => {
+  MedicPOP.classList.add("scale-0");
+  MedicPopWrap.classList.remove("opacity-[75%]");
+  MedicPopWrap.classList.add("pointer-events-none");
+});
+ClosePop.addEventListener("click", (e) => {
+  MedicPOP.classList.add("scale-0");
+  MedicPopWrap.classList.remove("opacity-[75%]");
+  MedicPopWrap.classList.add("pointer-events-none");
 });
 
 // CARUSEL DE FISE MEDICALE

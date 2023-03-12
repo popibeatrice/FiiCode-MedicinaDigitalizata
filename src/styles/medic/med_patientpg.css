@@ -81,3 +81,6 @@
   padding-left: 0.75rem;
   border-radius: 2rem 0 0 2rem;
 }
+.filtered{
+    display: none;
+}
