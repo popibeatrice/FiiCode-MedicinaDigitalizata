@@ -15,7 +15,7 @@ import { onAuthStateChanged } from "firebase/auth";
 
 const MedicName = document.querySelector(".medic-name");
 const NoAccess = document.querySelector(".NoAccess");
-const AccountName = document.querySelector(".account-name");
+const AccountName = document.querySelector("#account-name");
 
 async function Invitation(MedRef) {
   const docSnap = await getDoc(MedRef);
@@ -34,8 +34,8 @@ async function PatientSearch(q) {
     querySnapshot.forEach((doc) => {
       const pacient = document.createElement("li");
       const anchor = document.createElement("a");
-      pacient.appendChild(anchor);
-      pacient.classList.add(
+      anchor.classList.add(
+        "block",
         "border-logo_blue",
         "w-[100%]",
         "text-center",
@@ -51,6 +51,7 @@ async function PatientSearch(q) {
         "hover:text-white",
         "duration-500"
       );
+      pacient.appendChild(anchor);
       const UID = doc.id;
       anchor.href = `./med_patientpg.html?ID=${UID}`;
       anchor.innerHTML = `${doc.data().nume} ${doc.data().prenume}`;
@@ -101,6 +102,7 @@ window.addEventListener("scroll", (e) => {
 
 menuBtn.addEventListener("click", (e) => {
   Logo.classList.remove("duration-300");
+  header.classList.remove("culoare");
   logoLink.classList.toggle("invisible");
   menuBtn.classList.toggle("is-active");
   if (menuBtn.classList.contains("is-active")) {
@@ -109,6 +111,7 @@ menuBtn.addEventListener("click", (e) => {
   } else {
     MeniuWrapper.classList.remove("opacity-[75%]");
     MeniuWrapper.classList.add("pointer-events-none");
+    if (window.scrollY > 0) header.classList.add("culoare");
   }
 });
 MeniuWrapper.addEventListener("click", (e) => {
@@ -116,6 +119,7 @@ MeniuWrapper.addEventListener("click", (e) => {
   MeniuWrapper.classList.remove("opacity-[75%]");
   logoLink.classList.remove("invisible");
   MeniuWrapper.classList.add("pointer-events-none");
+  if (window.scrollY > 0) header.classList.add("culoare");
 });
 CloseInvite.addEventListener("click", (e) => {
   PacientInvitation.classList.add("scale-0");

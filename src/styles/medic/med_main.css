@@ -9,6 +9,7 @@ canvas {
   left: 0;
 }
 .culoare {
+  background: rgba(255, 255, 255, 0.7);
 }
 .marime {
   height: 4rem;

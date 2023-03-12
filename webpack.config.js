@@ -11,6 +11,7 @@ module.exports = {
     med_main: "./src/ts/medic/med_main.js",
     patient_main: "./src/ts/pacient/patient_main.ts",
     med_patientpg: "./src/ts/medic/med_patientpg.ts",
+    med_profil: "./src/ts/medic/med_profil.ts",
   },
   mode: "development",
   devServer: {
@@ -81,6 +82,12 @@ module.exports = {
       filename: "med_patientpg.html",
       template: "src/html/medic/med_patientpg.html",
       chunks: ["med_patientpg"],
+    }),
+    new HtmlWebpackPlugin({
+      // Also generate a test.html
+      filename: "med_profil.html",
+      template: "src/html/medic/med_profil.html",
+      chunks: ["med_profil"],
     }),
   ],
   output: {

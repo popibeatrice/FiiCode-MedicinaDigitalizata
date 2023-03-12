@@ -12,6 +12,9 @@
   height: 4rem;
   width: 4rem;
 }
+.culoare {
+  background: rgba(255, 255, 255, 0.7);
+}
 .meniu::after,
 .meniu::before {
   content: "";

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -99,12 +99,13 @@
     <title>med main</title>
   </head>
   <body class="-z-20 overflow-x-hidden">
+    <span id="top" class="invisible absolute inset-0">TOP</span>
     <div class="NoAccess fixed inset-0 z-50 bg-white"></div>
     <header class="sticky top-0 z-20 font-poppins">
       <div class="flex flex-row items-center justify-between">
         <a
           id="logo_link"
-          href="./med_main.html"
+          href="#top"
           class="flex items-center justify-center gap-2"
         >
           <img
@@ -114,18 +115,18 @@
             id="Logo"
           />
         </a>
-        <nav class="mx-10 hidden text-white xs:block md:text-lg">
+        <nav class="mx-10 hidden text-white xs:block md:text-lg 3xl:text-xl">
           <ul class="flex text-logo_blue">
             <li class="cursor-pointer duration-300 hover:text-moviu">
-              <a class="mx-3" href="#">Program</a>
+              <a class="ml-6" href="#">Program</a>
             </li>
             <li class="cursor-pointer duration-300 hover:text-moviu">
-              <a class="mx-3" href="#">Pacienti</a>
+              <a class="ml-6" href="#pacienti">Pacienti</a>
             </li>
-            <li
-              class="account-name cursor-pointer duration-300 hover:text-moviu"
-            >
-              <a class="ml-3" href="#">Nume Prenume</a>
+            <li class="cursor-pointer duration-300 hover:text-moviu">
+              <a class="ml-6" href="./med_profil.html" id="account-name"
+                >Nume Prenume</a
+              >
             </li>
           </ul>
         </nav>
@@ -136,20 +137,26 @@
               class="mobile-nav absolute right-[-20rem] top-10 flex flex-col"
             >
               <ul class="flex flex-col">
-                <li
-                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-95 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
-                >
-                  <a class="" href="#">Account</a>
+                <li>
+                  <a
+                    class="meniu_hover relative m-2 block w-40 rounded-md bg-white bg-opacity-95 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
+                    href="./med_profil.html"
+                    >Profil</a
+                  >
                 </li>
-                <li
-                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-95 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
-                >
-                  <a class="" href="#">Program</a>
+                <li>
+                  <a
+                    class="meniu_hover relative m-2 block w-40 rounded-md bg-white bg-opacity-95 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
+                    href="#"
+                    >Program</a
+                  >
                 </li>
-                <li
-                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-95 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
-                >
-                  <a class="">Pacienti</a>
+                <li>
+                  <a
+                    class="meniu_hover relative m-2 block w-40 rounded-md bg-white bg-opacity-95 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
+                    href="#pacienti"
+                    >Pacienti</a
+                  >
                 </li>
               </ul>
             </nav>
@@ -243,9 +250,10 @@
     </main>
 
     <section
-      class="mr-auto ml-auto mt-10 flex w-[70%] max-w-6xl flex-col md:mt-20"
+      class="mr-auto ml-auto mt-10 flex w-[70%] max-w-5xl flex-col md:mt-20"
     >
       <h2
+        id="pacienti"
         class="mb-8 self-center font-poppins text-3xl font-semibold text-logo_blue xs:text-4xl sm:text-5xl 3xl:text-6xl"
       >
         Pacienti

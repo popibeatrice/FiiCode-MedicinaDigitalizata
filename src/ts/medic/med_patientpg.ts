@@ -47,6 +47,7 @@ onAuthStateChanged(auth, (user) => {
 
 // transformare burgur
 menuBtn.addEventListener("click", (e) => {
+  header.classList.remove("culoare");
   Logo.classList.remove("duration-300");
   menuBtn.classList.toggle("is-active");
   logoLink.classList.toggle("invisible");
@@ -56,9 +57,11 @@ menuBtn.addEventListener("click", (e) => {
   } else {
     MeniuWrapper.classList.remove("opacity-[75%]");
     MeniuWrapper.classList.add("pointer-events-none");
+    if (window.scrollY > 0) header.classList.add("culoare");
   }
 });
 MeniuWrapper.addEventListener("click", (e) => {
+  if (window.scrollY > 0) header.classList.add("culoare");
   menuBtn.classList.remove("is-active");
   logoLink.classList.remove("invisible");
   MeniuWrapper.classList.remove("opacity-[75%]");
@@ -120,7 +123,7 @@ PDFsendBtn.addEventListener("click", () => {
   reader_id.onload = (e) => {
     // transform pdf in base 64
     PDFstring = reader_id.result;
-    const PDFrefID = ref(storage, `caca/istoricMed/${PDF.name}`);
+    const PDFrefID = ref(storage, `${UID}/istoricMed/${PDF.name}`);
     uploadString(PDFrefID, PDFstring as string, "data_url")
       .then(() => {
         alert("pdf incarcat cu succes");
@@ -132,7 +135,7 @@ PDFsendBtn.addEventListener("click", () => {
   };
 });
 
-const listRef = ref(storage, "caca/istoricMed");
+const listRef = ref(storage, `${UID}/istoricMed`);
 listAll(listRef)
   .then((res) => {
     res.items.forEach((itemRef) => {
