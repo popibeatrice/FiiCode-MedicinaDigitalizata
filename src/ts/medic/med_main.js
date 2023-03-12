@@ -49,7 +49,7 @@ async function PatientSearch(q) {
         "capitalize",
         "hover:bg-logo_blue",
         "hover:text-white",
-        "duration-300"
+        "duration-500"
       );
       const UID = doc.id;
       anchor.href = `./med_patientpg.html?ID=${UID}`;

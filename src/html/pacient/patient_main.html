@@ -99,6 +99,78 @@
     <title>patient main</title>
   </head>
   <body>
-    <p>pacipipi</p>
+    <header class="sticky top-0 z-20 font-poppins">
+      <div class="flex flex-row items-center justify-between">
+        <a
+          id="logo_link"
+          href="./med_main.html"
+          class="flex items-center justify-center gap-2"
+        >
+          <img
+            src="../../assets/icons/logo.png"
+            class="pointer-events-none h-20 w-20 xl:h-24 xl:w-24"
+            alt="Logo MenUmed"
+            id="Logo"
+          />
+        </a>
+        <nav class="mx-10 hidden text-white xs:block md:text-lg">
+          <ul class="flex text-logo_blue">
+            <li class="cursor-pointer duration-300 hover:text-moviu">
+              <a class="mx-3" href="#">Programari</a>
+            </li>
+            <li class="cursor-pointer duration-300 hover:text-moviu">
+              <a class="mx-3" href="#">Medici din zona</a>
+            </li>
+            <li
+              class="account-name cursor-pointer duration-300 hover:text-moviu"
+            >
+              <a class="ml-3" href="#">Nume Prenume</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="z-30 xs:hidden">
+          <button class="meniu relative mx-6 block h-6 w-6 cursor-pointer">
+            <div class="bar"></div>
+            <nav
+              class="mobile-nav absolute right-[-20rem] top-10 flex flex-col"
+            >
+              <ul class="flex flex-col">
+                <li
+                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-95 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
+                >
+                  <a class="" href="#">Account</a>
+                </li>
+                <li
+                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-95 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
+                >
+                  <a class="" href="#">Program</a>
+                </li>
+                <li
+                  class="meniu_hover relative m-2 w-40 rounded-md bg-white bg-opacity-95 py-2 px-2 text-left font-roboto text-moviu duration-500 hover:bg-moviu hover:text-white"
+                >
+                  <a class="">Pacienti</a>
+                </li>
+              </ul>
+            </nav>
+          </button>
+        </div>
+      </div>
+    </header>
+    <div
+      class="meniu-wrapper pointer-events-none fixed inset-0 z-10 bg-black opacity-0"
+    ></div>
+    <main>
+      <div class="mt-10 py-10 px-5 xs:ml-6 sm:ml-14 md:ml-40">
+        <h1
+          class="font-poppins text-3xl font-semibold sm:text-4xl md:text-5xl 3xl:text-7xl"
+        >
+          Welcome,<br />
+          <span class="medic-name capitalize text-logo_blue"></span>
+        </h1>
+        <h3 class="mt-3 3xl:text-lg">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit
+        </h3>
+      </div>
+    </main>
   </body>
 </html>
