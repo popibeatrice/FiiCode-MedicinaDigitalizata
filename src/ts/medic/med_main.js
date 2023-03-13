@@ -27,9 +27,12 @@ async function Invitation(MedRef) {
 }
 
 const ListaPacienti = document.querySelector("#listaPacienti");
+const patientTitle = document.querySelector("#pacienti");
+
 async function PatientSearch(q) {
   const querySnapshot = await getDocs(q);
-  if (querySnapshot.empty) throw TypeError("unde s pacientii doctore");
+  if (querySnapshot.empty)
+    patientTitle.textContent = "Inca nu aveti pacienti invitati";
   else
     querySnapshot.forEach((doc) => {
       const pacient = document.createElement("li");
@@ -66,7 +69,6 @@ onAuthStateChanged(auth, (user) => {
     Invitation(MedRef).then((cred) => {
       MedicName.textContent = cred;
       AccountName.textContent = cred;
-      console.log(cred);
       NoAccess.classList.add("opacity-0");
       NoAccess.classList.add("pointer-events-none");
     });

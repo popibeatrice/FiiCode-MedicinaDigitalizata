@@ -10,7 +10,7 @@ module.exports = {
     patient_signup: "./src/ts/pacient/patient_signup.ts",
     med_main: "./src/ts/medic/med_main.js",
     patient_main: "./src/ts/pacient/patient_main.ts",
-    med_patientpg: "./src/ts/medic/med_patientpg.ts",
+    med_patientpg: "./src/ts/medic/med_patientpg.js",
     med_profil: "./src/ts/medic/med_profil.ts",
   },
   mode: "development",
