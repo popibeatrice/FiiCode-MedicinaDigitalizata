@@ -130,13 +130,15 @@
           >
             <li class="w-36 md:w-40 lg:w-44">
               <button
-                class="w-full rounded-md border border-logo_blue px-4 py-2 text-center text-gray-500 md:text-lg"
+                id="btn_detalii"
+                class="w-full rounded-md border border-logo_blue bg-logo_blue px-4 py-2 text-center text-white md:text-lg"
               >
                 Detalii cont
               </button>
             </li>
             <li class="w-36 md:w-40 lg:w-44">
               <button
+                id="btn_parola"
                 class="w-full rounded-md border border-logo_blue px-4 py-2 text-center text-gray-500 md:text-lg"
               >
                 Schima parola
@@ -146,6 +148,7 @@
           <div class="flex flex-col gap-5 xxs:flex-row sm:flex-col">
             <li class="w-36 md:w-40 lg:w-44">
               <button
+                id="btn_email"
                 class="w-full rounded-md border border-logo_blue px-4 py-2 text-center text-gray-500 md:text-lg"
               >
                 Schimba email
@@ -153,7 +156,8 @@
             </li>
             <li class="w-36 md:w-40 lg:w-44">
               <button
-                class="w-full rounded-md bg-somon px-4 py-2 text-center text-white md:text-lg"
+                id="btn_deconectare"
+                class="w-full rounded-md bg-somon px-4 py-2 text-center text-white hover:bg-red-600 md:text-lg"
               >
                 Deconectare
               </button>
@@ -165,11 +169,11 @@
         class="mb-6 w-11/12 max-w-sm rounded-lg border border-gray-500 py-3 px-3 xl:max-w-md"
       >
         <h2
-          class="text-center font-poppins text-2xl font-semibold tracking-wider text-logo_blue"
+          class="text-center font-poppins text-2xl font-semibold tracking-wider text-logo_blue xl:text-4xl"
         >
           Detalii cont
         </h2>
-        <form action="" class="mx-2 mt-4 flex flex-col gap-5">
+        <form action="" class="mx-2 mt-4 flex flex-col gap-5" id="detalii_cont">
           <div class="flex flex-col items-start">
             <label for="nume" class="font-poppins font-light">Nume</label>
             <input
@@ -234,6 +238,99 @@
               type="time"
               name=""
               id="work_end"
+              class="w-full rounded-md border border-gray-300 py-[2px] px-1"
+            />
+          </div>
+          <button class="rounded-md bg-logo_blue py-1 text-lg text-white">
+            Update
+          </button>
+        </form>
+        <form
+          action=""
+          id="schimba_parola"
+          class="mx-2 mt-4 hidden flex-col gap-5"
+          autocomplete="off"
+        >
+          <div class="flex flex-col items-start">
+            <label for="email" class="font-poppins font-light">Email</label>
+            <input
+              type="email"
+              name=""
+              id="email"
+              required
+              class="w-full rounded-md border border-gray-300 py-[2px] px-1"
+            />
+          </div>
+          <div class="flex flex-col items-start">
+            <label for="pass_pass" class="font-poppins font-light"
+              >Parola</label
+            >
+            <input
+              type="password"
+              name=""
+              id="pass_pass"
+              autocomplete="new-password"
+              required
+              class="w-full rounded-md border border-gray-300 py-[2px] px-1"
+            />
+          </div>
+          <div class="flex flex-col items-start">
+            <label for="new_pass" class="font-poppins font-light"
+              >Parola noua</label
+            >
+            <input
+              type="password"
+              name=""
+              id="new_pass"
+              autocomplete="new-password"
+              required
+              class="w-full rounded-md border border-gray-300 py-[2px] px-1"
+            />
+          </div>
+          <button class="rounded-md bg-logo_blue py-1 text-lg text-white">
+            Update
+          </button>
+        </form>
+        <form
+          action=""
+          id="schimba_email"
+          class="mx-2 mt-4 hidden flex-col gap-5"
+          autocomplete="off"
+        >
+          <div class="flex flex-col items-start">
+            <label for="email_email" class="font-poppins font-light"
+              >Email</label
+            >
+            <input
+              type="email"
+              name=""
+              id="email_email"
+              required
+              class="w-full rounded-md border border-gray-300 py-[2px] px-1"
+            />
+          </div>
+          <div class="flex flex-col items-start">
+            <label for="pass_email" class="font-poppins font-light"
+              >Parola</label
+            >
+            <input
+              type="password"
+              name=""
+              id="pass_email"
+              autocomplete="new-password"
+              required
+              class="w-full rounded-md border border-gray-300 py-[2px] px-1"
+            />
+          </div>
+          <div class="flex flex-col items-start">
+            <label for="new_email" class="font-poppins font-light"
+              >Email nou</label
+            >
+            <input
+              type="email"
+              name=""
+              id="new_email"
+              required
               class="w-full rounded-md border border-gray-300 py-[2px] px-1"
             />
           </div>
