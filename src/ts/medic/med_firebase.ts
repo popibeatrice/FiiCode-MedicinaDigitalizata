@@ -3,7 +3,7 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, addDoc } from "firebase/firestore";
 import { ref, uploadString } from "firebase/storage";
 
 // variables
@@ -151,6 +151,7 @@ submit.addEventListener("click", (e) => {
             // backend info push
 
             setDoc(doc(db, "medici", UID), {
+              email : auth.currentUser.email,
               nume,
               prenume,
               telnumb,

@@ -1,5 +1,6 @@
 import "../../styles/medic/med_patientpg.css";
 import "../../styles/index.css";
+import { EmailSend } from "./emailjs.js";
 import { auth, storage, db } from "../firebase";
 import { ref, uploadString, listAll, getDownloadURL } from "firebase/storage";
 import { onAuthStateChanged } from "firebase/auth";
@@ -10,19 +11,22 @@ import {
   query,
   collection,
   where,
+  DocumentSnapshot,
+  setDoc,
+  updateDoc,
+  DocumentReference,
 } from "firebase/firestore";
-import { async } from "@firebase/util";
 
 // NAVBAR BURGUR DROPDOWN
 
 // variabile
 const menuBtn = document.querySelector(".meniu");
 const MeniuWrapper = document.querySelector(".meniu-wrapper");
-const numePacient = document.querySelector("#nume_pacient") as HTMLElement;
-const varstaPacient = document.querySelector("#varsta_pacient") as HTMLElement;
-const judPacient = document.querySelector("#jud_pacient") as HTMLElement;
-const locPacient = document.querySelector("#loc_pacient") as HTMLElement;
-const stradaPacient = document.querySelector("#strada_pacient") as HTMLElement;
+const numePacient = document.querySelector("#nume_pacient");
+const varstaPacient = document.querySelector("#varsta_pacient");
+const judPacient = document.querySelector("#jud_pacient");
+const locPacient = document.querySelector("#loc_pacient");
+const stradaPacient = document.querySelector("#strada_pacient");
 const noAccess = document.querySelector("#no_access");
 const header = document.querySelector("header");
 const Logo = document.querySelector("#Logo");
@@ -31,37 +35,61 @@ const urlParams = new URLSearchParams(window.location.search);
 const UID = urlParams.get("ID");
 const MediciList = document.querySelector("#medici");
 const Search = document.querySelector("#searchMed");
+const chooseButton = document.querySelector("#choose_button");
+let Radio = new Array();
+const medId = new Array();
+let CurrentName;
+let patientChange;
+let medEmail;
 
-const FilterTodos = (term : any) => {
-  Array.from(MediciList.children)
-    .filter((todo) => !todo.textContent.includes(term))
-    .forEach((todo) => {
-      todo.classList.add("filtered");
-    });
-    Array.from(MediciList.children).filter(todo => todo.textContent.includes(term))
-    .forEach(todo => {
-      todo.classList.remove("filtered");
-    });
-};
+async function MedEmailSearch(Med) {
+  const docSnap = await getDoc(Med);
+  if (docSnap.exists()) {
+    medEmail = docSnap.data().email;
+    console.log(medEmail);
+  } else throw TypeError("nu esti docos");
+}
 
-async function Doctors(Meds: any) {
+async function CurrentMedName(Med) {
+  const docSnap = await getDoc(Med);
+  if (docSnap.exists()) {
+    CurrentName = ` ${docSnap.data().nume} ${docSnap.data().prenume}`;
+    console.log(medEmail);
+  } else throw TypeError("nu esti docos");
+}
+
+async function Doctors(Meds) {
   const querySnapshot = await getDocs(Meds);
-  if (querySnapshot.empty) MediciList.textContent = "Nu sunt medici disponibili in zona";
+  if (querySnapshot.empty)
+    MediciList.textContent = "Nu sunt medici disponibili in zona";
   else {
-    querySnapshot.forEach((doc: any) => {
-      const Medic = document.createElement("li");
-      ///Medic.textContent = ` ${doc.data().nume} ${doc.data().nume}`;
-      Medic.textContent = ` ${doc.data().nume} ${doc.data().prenume}`;
-      Medic.classList.add("w-full", "text-white", "my-4", "p-2", "capitalize", "bg-gray-600", "rounded-sm");
-      MediciList.appendChild(Medic);
-      Search.addEventListener("keyup", (e) => {
-        const event = e.target as any;
-        const term = event.value.trim();
-        FilterTodos(term);
-      });
+    querySnapshot.forEach((doc) => {
+      if (doc.id != auth.currentUser.uid) {
+        const MedicLabel = document.createElement("label");
+        const Medic = document.createElement("input");
+        medId.push(doc.id);
+        Medic.classList.add("invisible");
+        Medic.type = "radio";
+        Medic.name = "radio";
+        MedicLabel.textContent = ` ${doc.data().nume} ${doc.data().prenume}`;
+        MedicLabel.classList.add(
+          "w-full",
+          "text-white",
+          "my-4",
+          "p-2",
+          "block",
+          "capitalize",
+          "bg-gray-600",
+          "rounded-sm"
+        );
+        MedicLabel.appendChild(Medic);
+        MediciList.appendChild(MedicLabel);
+      }
     });
+    Radio = Array.from(MediciList.children);
   }
 }
+
 // verificam daca e conectat
 onAuthStateChanged(auth, (user) => {
   if (!user) {
@@ -69,6 +97,8 @@ onAuthStateChanged(auth, (user) => {
   } else {
     const pacientRef = doc(db, "pacienti", UID);
     getDoc(pacientRef).then((cred) => {
+      patientChange = cred;
+      console.log(cred);
       const numeComplet = `${cred.data().nume} ${cred.data().prenume}`;
       const strada = `${cred.data().strada}`;
       const loc = `${cred.data().loc}`;
@@ -90,6 +120,79 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
+MediciList.addEventListener("click", (e) => {
+  const event = e.target;
+  if (event.tagName === "LABEL") {
+    event.children[0].checked = true;
+    Radio.forEach((label) => {
+      const input = label.children[0];
+      if (input.checked === true) {
+        input.parentElement.classList.remove("bg-gray-600");
+        input.parentElement.classList.add("bg-gray-800");
+      } else {
+        input.parentElement.classList.remove("bg-gray-800");
+        input.parentElement.classList.add("bg-gray-600");
+      }
+    });
+  }
+});
+
+const FilterMeds = (term) => {
+  Array.from(MediciList.children)
+    .filter((todo) => !todo.textContent.includes(term))
+    .forEach((todo) => {
+      todo.classList.remove("block");
+      todo.classList.add("filtered");
+    });
+  Array.from(MediciList.children)
+    .filter((todo) => todo.textContent.includes(term))
+    .forEach((todo) => {
+      todo.classList.remove("filtered");
+      todo.classList.add("block");
+    });
+};
+
+Search.addEventListener("keyup", (e) => {
+  const event = e.target;
+  const term = event.value.trim();
+  FilterMeds(term);
+});
+
+chooseButton.addEventListener("click", () => {
+  let checkedRadio;
+  Radio.forEach((label, index) => {
+    const input = label.children[0];
+    if (input.checked === true) checkedRadio = index;
+  });
+  medId.forEach((id, index) => {
+    if (index === checkedRadio) {
+      updateDoc(doc(db, "pacienti", UID), {
+        medic: id,
+      }).then(() => {
+        const MedRef = doc(db, "medici", id);
+        MedEmailSearch(MedRef).then(() => {
+          const medicName = doc(db, "medici", auth.currentUser.uid);
+          CurrentMedName(medicName).then(() => {
+            const params = {
+              from_name: CurrentName,
+              pacient_name: `${patientChange.data().nume} ${
+                patientChange.data().prenume
+              }`,
+              new_med: medEmail,
+            };
+            emailjs
+              .send("service_yosjkcn", "template_0p86286", params)
+              .then(() => {
+                alert("invitation mail was send to you pacient");
+                location.href = "./med_main.html";
+              });
+          });
+        });
+      });
+    }
+  });
+});
+
 // transformare burgur
 menuBtn.addEventListener("click", (e) => {
   header.classList.remove("culoare");
@@ -105,6 +208,7 @@ menuBtn.addEventListener("click", (e) => {
     if (window.scrollY > 0) header.classList.add("culoare");
   }
 });
+
 MeniuWrapper.addEventListener("click", (e) => {
   if (window.scrollY > 0) header.classList.add("culoare");
   menuBtn.classList.remove("is-active");
@@ -134,15 +238,19 @@ TrimitePacient.addEventListener("click", (e) => {
   MedicPopWrap.classList.add("opacity-[75%]");
   MedicPopWrap.classList.remove("pointer-events-none");
 });
+
 MedicPopWrap.addEventListener("click", (e) => {
   MedicPOP.classList.add("scale-0");
   MedicPopWrap.classList.remove("opacity-[75%]");
   MedicPopWrap.classList.add("pointer-events-none");
+  MediciList.reset();
 });
+
 ClosePop.addEventListener("click", (e) => {
   MedicPOP.classList.add("scale-0");
   MedicPopWrap.classList.remove("opacity-[75%]");
   MedicPopWrap.classList.add("pointer-events-none");
+  MediciList.reset();
 });
 
 // CARUSEL DE FISE MEDICALE
@@ -157,6 +265,7 @@ fata.addEventListener("click", () => {
   const slideWidth = slide.clientWidth;
   container.scrollLeft += slideWidth;
 });
+
 spate.addEventListener("click", () => {
   const slideWidth = slide.clientWidth;
   container.scrollLeft -= slideWidth;
@@ -170,27 +279,29 @@ const PDFsendBtn = document.querySelector("#PDFsend_btn");
 
 // functie care da trigger la inputul ala urat
 function openFile() {
-  const PDFinput = document.querySelector("#PDF_input") as HTMLFormElement;
+  const PDFinput = document.querySelector("#PDF_input");
   PDFinput.click();
 }
+
 PDFuploadBtn.addEventListener("click", () => {
   openFile();
 });
+
 PDFsendBtn.addEventListener("click", () => {
-  const PDFform = document.querySelector("#PDF_form") as HTMLFormElement;
+  const PDFform = document.querySelector("#PDF_form");
   const PDF = PDFform.PDF_input.files[0];
   if (PDF === undefined) {
     alert("selectati PDF");
     return;
   }
-  let PDFstring: string | ArrayBuffer;
+  let PDFstring;
   let reader_id = new FileReader();
   reader_id.readAsDataURL(PDF);
   reader_id.onload = (e) => {
     // transform pdf in base 64
     PDFstring = reader_id.result;
     const PDFrefID = ref(storage, `${UID}/istoricMed/${PDF.name}`);
-    uploadString(PDFrefID, PDFstring as string, "data_url")
+    uploadString(PDFrefID, PDFstring, "data_url")
       .then(() => {
         alert("pdf incarcat cu succes");
         PDFform.reset();
